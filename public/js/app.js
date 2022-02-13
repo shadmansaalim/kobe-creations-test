@@ -5375,7 +5375,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Home_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Home.css */ "./resources/js/components/Home/Home.css");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _images_kobe_cars_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../images/kobe-cars.png */ "./resources/images/kobe-cars.png");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _VehicleMake_VehicleMake__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../VehicleMake/VehicleMake */ "./resources/js/components/VehicleMake/VehicleMake.js");
+/* harmony import */ var _VehicleModel_VehicleModel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../VehicleModel/VehicleModel */ "./resources/js/components/VehicleModel/VehicleModel.js");
+/* harmony import */ var _VehicleType_VehicleType__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../VehicleType/VehicleType */ "./resources/js/components/VehicleType/VehicleType.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -5389,6 +5392,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
 
 
 
@@ -5446,31 +5452,88 @@ var Home = function Home() {
   }
 
   console.log(vehiclesType);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: toggled ? "d-flex toggled" : "d-flex",
     id: "wrapper",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       id: "sidebar-wrapper",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
         className: "text-center pt-4 pb-2 border-bottom",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
           src: _images_kobe_cars_png__WEBPACK_IMPORTED_MODULE_2__["default"],
           alt: "Kobe Cars Logo",
           width: "150px"
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        className: "list-group my-3"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        className: "list-group my-3",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          className: "my-3",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+            className: "d-flex",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h6", {
+              className: "ms-2",
+              children: "Makes"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+            className: "col-11 row mx-auto d-flex ",
+            children: vehiclesMake.map(function (make) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_VehicleMake_VehicleMake__WEBPACK_IMPORTED_MODULE_3__["default"], {
+                make: make
+              });
+            })
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          className: "my-3",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+            className: "d-flex",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h6", {
+              className: "ms-2",
+              children: "Models"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+            "class": "form-floating col-11 mx-auto",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("select", {
+              "class": "form-select p-0 ps-2",
+              id: "floatingSelect",
+              "aria-label": "Floating label select example",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
+                selected: true,
+                children: "Models"
+              }), vehiclesModel.map(function (model) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_VehicleModel_VehicleModel__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                  model: model
+                });
+              })]
+            })
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          className: "my-3",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+            className: "d-flex",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h6", {
+              className: "ms-2",
+              children: "Types"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+            className: "col-11 row mx-auto d-flex ",
+            children: vehiclesType.map(function (type) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_VehicleType_VehicleType__WEBPACK_IMPORTED_MODULE_5__["default"], {
+                type: type
+              });
+            })
+          })]
+        })]
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       id: "page-content-wrapper",
       style: {
         backgroundColor: '#f2f2f2'
       },
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("nav", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("nav", {
         className: "navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
           className: "d-flex align-items-center",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("i", {
             onClick: function onClick() {
               return setToggled(!toggled);
             },
@@ -5479,12 +5542,12 @@ var Home = function Home() {
             style: {
               color: '#007cc2'
             }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h3", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
             className: "m-0 text-uppercase project-title",
             children: "KOBE CARS CREATION"
           })]
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
         className: "container-fluid px-4 mt-4"
       })]
     })]
@@ -5492,6 +5555,160 @@ var Home = function Home() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Home);
+
+/***/ }),
+
+/***/ "./resources/js/components/VehicleMake/VehicleMake.js":
+/*!************************************************************!*\
+  !*** ./resources/js/components/VehicleMake/VehicleMake.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _images_carlogo1_jpeg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../images/carlogo1.jpeg */ "./resources/images/carlogo1.jpeg");
+/* harmony import */ var _images_carlogo2_webp__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../images/carlogo2.webp */ "./resources/images/carlogo2.webp");
+/* harmony import */ var _images_carlogo3_webp__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../images/carlogo3.webp */ "./resources/images/carlogo3.webp");
+/* harmony import */ var _images_carlogo4_webp__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../images/carlogo4.webp */ "./resources/images/carlogo4.webp");
+/* harmony import */ var _images_carlogo5_webp__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../images/carlogo5.webp */ "./resources/images/carlogo5.webp");
+/* harmony import */ var _images_carlogo6_webp__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../images/carlogo6.webp */ "./resources/images/carlogo6.webp");
+/* harmony import */ var _images_carlogo7_webp__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../images/carlogo7.webp */ "./resources/images/carlogo7.webp");
+/* harmony import */ var _images_carlogo8_webp__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../images/carlogo8.webp */ "./resources/images/carlogo8.webp");
+/* harmony import */ var _images_carlogo9_webp__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../images/carlogo9.webp */ "./resources/images/carlogo9.webp");
+/* harmony import */ var _images_carlogo10_webp__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../images/carlogo10.webp */ "./resources/images/carlogo10.webp");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var VehicleMake = function VehicleMake(_ref) {
+  var make = _ref.make;
+  //Dummy car logos to use in UI for better look and UX
+  var dummyLogos = [_images_carlogo1_jpeg__WEBPACK_IMPORTED_MODULE_1__["default"], _images_carlogo2_webp__WEBPACK_IMPORTED_MODULE_2__["default"], _images_carlogo3_webp__WEBPACK_IMPORTED_MODULE_3__["default"], _images_carlogo4_webp__WEBPACK_IMPORTED_MODULE_4__["default"], _images_carlogo5_webp__WEBPACK_IMPORTED_MODULE_5__["default"], _images_carlogo6_webp__WEBPACK_IMPORTED_MODULE_6__["default"], _images_carlogo7_webp__WEBPACK_IMPORTED_MODULE_7__["default"], _images_carlogo8_webp__WEBPACK_IMPORTED_MODULE_8__["default"], _images_carlogo9_webp__WEBPACK_IMPORTED_MODULE_9__["default"], _images_carlogo10_webp__WEBPACK_IMPORTED_MODULE_10__["default"]];
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+    className: "col-6 col-md-3 border p-2 box",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("img", {
+      className: "img-fluid logo",
+      src: dummyLogos[Math.floor(Math.random() * dummyLogos.length)],
+      alt: ""
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("small", {
+      className: "text-muted",
+      style: {
+        fontSize: '9px'
+      },
+      children: make
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (VehicleMake);
+
+/***/ }),
+
+/***/ "./resources/js/components/VehicleModel/VehicleModel.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/VehicleModel/VehicleModel.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+var VehicleModel = function VehicleModel(_ref) {
+  var model = _ref.model;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+    value: model,
+    children: model
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (VehicleModel);
+
+/***/ }),
+
+/***/ "./resources/js/components/VehicleType/VehicleType.js":
+/*!************************************************************!*\
+  !*** ./resources/js/components/VehicleType/VehicleType.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _images_type1_webp__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../images/type1.webp */ "./resources/images/type1.webp");
+/* harmony import */ var _images_type2_webp__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../images/type2.webp */ "./resources/images/type2.webp");
+/* harmony import */ var _images_type3_webp__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../images/type3.webp */ "./resources/images/type3.webp");
+/* harmony import */ var _images_type4_webp__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../images/type4.webp */ "./resources/images/type4.webp");
+/* harmony import */ var _images_type5_webp__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../images/type5.webp */ "./resources/images/type5.webp");
+/* harmony import */ var _images_type6_webp__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../images/type6.webp */ "./resources/images/type6.webp");
+/* harmony import */ var _images_type7_webp__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../images/type7.webp */ "./resources/images/type7.webp");
+/* harmony import */ var _images_type8_webp__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../images/type8.webp */ "./resources/images/type8.webp");
+/* harmony import */ var _images_type9_webp__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../images/type9.webp */ "./resources/images/type9.webp");
+/* harmony import */ var _images_type10_webp__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../images/type10.webp */ "./resources/images/type10.webp");
+/* harmony import */ var _images_type11_webp__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../images/type11.webp */ "./resources/images/type11.webp");
+/* harmony import */ var _images_type12_webp__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../images/type12.webp */ "./resources/images/type12.webp");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var VehicleType = function VehicleType(_ref) {
+  var type = _ref.type;
+  //Dummy car types logo to use in UI for better look and UX
+  var dummyLogos = [_images_type1_webp__WEBPACK_IMPORTED_MODULE_1__["default"], _images_type2_webp__WEBPACK_IMPORTED_MODULE_2__["default"], _images_type3_webp__WEBPACK_IMPORTED_MODULE_3__["default"], _images_type4_webp__WEBPACK_IMPORTED_MODULE_4__["default"], _images_type5_webp__WEBPACK_IMPORTED_MODULE_5__["default"], _images_type6_webp__WEBPACK_IMPORTED_MODULE_6__["default"], _images_type7_webp__WEBPACK_IMPORTED_MODULE_7__["default"], _images_type8_webp__WEBPACK_IMPORTED_MODULE_8__["default"], _images_type9_webp__WEBPACK_IMPORTED_MODULE_9__["default"], _images_type10_webp__WEBPACK_IMPORTED_MODULE_10__["default"], _images_type11_webp__WEBPACK_IMPORTED_MODULE_11__["default"], _images_type12_webp__WEBPACK_IMPORTED_MODULE_12__["default"]];
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)("div", {
+    className: "col-6 col-md-4 border p-2 box",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("img", {
+      className: "img-fluid logo",
+      src: dummyLogos[Math.floor(Math.random() * dummyLogos.length)],
+      alt: ""
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("small", {
+      className: "text-muted",
+      style: {
+        fontSize: '9px'
+      },
+      children: type
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (VehicleType);
 
 /***/ }),
 
@@ -10623,6 +10840,156 @@ module.exports = function (cssWithMappingToString) {
 
 /***/ }),
 
+/***/ "./resources/images/carlogo1.jpeg":
+/*!****************************************!*\
+  !*** ./resources/images/carlogo1.jpeg ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/carlogo1.jpeg?d39c06a4f7d188e449f837d3b1bfc40c");
+
+/***/ }),
+
+/***/ "./resources/images/carlogo10.webp":
+/*!*****************************************!*\
+  !*** ./resources/images/carlogo10.webp ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/carlogo10.webp?a0e4b35d4b6fb73506ff6fdc326b3cfe");
+
+/***/ }),
+
+/***/ "./resources/images/carlogo2.webp":
+/*!****************************************!*\
+  !*** ./resources/images/carlogo2.webp ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/carlogo2.webp?7e8b7fc9b07becf787e6b4e3622fb037");
+
+/***/ }),
+
+/***/ "./resources/images/carlogo3.webp":
+/*!****************************************!*\
+  !*** ./resources/images/carlogo3.webp ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/carlogo3.webp?b6f6df1f558c6918db702ba4a14c120f");
+
+/***/ }),
+
+/***/ "./resources/images/carlogo4.webp":
+/*!****************************************!*\
+  !*** ./resources/images/carlogo4.webp ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/carlogo4.webp?68dca0e54142eb3dc1e47be73f964135");
+
+/***/ }),
+
+/***/ "./resources/images/carlogo5.webp":
+/*!****************************************!*\
+  !*** ./resources/images/carlogo5.webp ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/carlogo5.webp?ac6df8134e43ceb87cc542740b2b2444");
+
+/***/ }),
+
+/***/ "./resources/images/carlogo6.webp":
+/*!****************************************!*\
+  !*** ./resources/images/carlogo6.webp ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/carlogo6.webp?51a35cf5f50bf8aa5d2e4bd5ac068ac6");
+
+/***/ }),
+
+/***/ "./resources/images/carlogo7.webp":
+/*!****************************************!*\
+  !*** ./resources/images/carlogo7.webp ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/carlogo7.webp?a6f54dc97047cee96c793780fd2cd4b7");
+
+/***/ }),
+
+/***/ "./resources/images/carlogo8.webp":
+/*!****************************************!*\
+  !*** ./resources/images/carlogo8.webp ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/carlogo8.webp?ea629c97ad76ce2c4ecdf98e5db0d06a");
+
+/***/ }),
+
+/***/ "./resources/images/carlogo9.webp":
+/*!****************************************!*\
+  !*** ./resources/images/carlogo9.webp ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/carlogo9.webp?c21796ba640e57f3299c20be3187fc03");
+
+/***/ }),
+
 /***/ "./resources/images/kobe-cars.png":
 /*!****************************************!*\
   !*** ./resources/images/kobe-cars.png ***!
@@ -10635,6 +11002,186 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/kobe-cars.png?d01c0512ba58792f43fcde0897c19425");
+
+/***/ }),
+
+/***/ "./resources/images/type1.webp":
+/*!*************************************!*\
+  !*** ./resources/images/type1.webp ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/type1.webp?7e67037ab09e694ced7a8bfa11380e7d");
+
+/***/ }),
+
+/***/ "./resources/images/type10.webp":
+/*!**************************************!*\
+  !*** ./resources/images/type10.webp ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/type10.webp?e7e2eeafc9f9bb4dfdf15ea52798e494");
+
+/***/ }),
+
+/***/ "./resources/images/type11.webp":
+/*!**************************************!*\
+  !*** ./resources/images/type11.webp ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/type11.webp?f0d589e4ab9a2596dfe97688a3d49d80");
+
+/***/ }),
+
+/***/ "./resources/images/type12.webp":
+/*!**************************************!*\
+  !*** ./resources/images/type12.webp ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/type12.webp?310ce1cb44325b6d0c584a502414b70e");
+
+/***/ }),
+
+/***/ "./resources/images/type2.webp":
+/*!*************************************!*\
+  !*** ./resources/images/type2.webp ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/type2.webp?bf5f761f2e35ca0961e234f5145a371f");
+
+/***/ }),
+
+/***/ "./resources/images/type3.webp":
+/*!*************************************!*\
+  !*** ./resources/images/type3.webp ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/type3.webp?7e67037ab09e694ced7a8bfa11380e7d");
+
+/***/ }),
+
+/***/ "./resources/images/type4.webp":
+/*!*************************************!*\
+  !*** ./resources/images/type4.webp ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/type4.webp?c1b823d51114000659ace4c51ee49cea");
+
+/***/ }),
+
+/***/ "./resources/images/type5.webp":
+/*!*************************************!*\
+  !*** ./resources/images/type5.webp ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/type5.webp?10d3466bdcd802d927a8e937672bbf83");
+
+/***/ }),
+
+/***/ "./resources/images/type6.webp":
+/*!*************************************!*\
+  !*** ./resources/images/type6.webp ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/type6.webp?f3d4d4a0bc7beb9ccb800259fd6cd379");
+
+/***/ }),
+
+/***/ "./resources/images/type7.webp":
+/*!*************************************!*\
+  !*** ./resources/images/type7.webp ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/type7.webp?d16e6b903daef2926dcee39d35707bb6");
+
+/***/ }),
+
+/***/ "./resources/images/type8.webp":
+/*!*************************************!*\
+  !*** ./resources/images/type8.webp ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/type8.webp?8e54290a58cd1f64581b333e2375557c");
+
+/***/ }),
+
+/***/ "./resources/images/type9.webp":
+/*!*************************************!*\
+  !*** ./resources/images/type9.webp ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/type9.webp?c967b94383d0e33837f2b946e604e227");
 
 /***/ }),
 

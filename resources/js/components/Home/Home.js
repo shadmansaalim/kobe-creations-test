@@ -2,7 +2,9 @@ import './Home.css';
 import React from 'react';
 import { useEffect, useState } from 'react';
 import logo from '../../../images/kobe-cars.png';
-
+import VehicleMake from '../VehicleMake/VehicleMake';
+import VehicleModel from '../VehicleModel/VehicleModel';
+import VehicleType from '../VehicleType/VehicleType';
 
 
 const Home = () => {
@@ -41,7 +43,45 @@ const Home = () => {
                     <img src={logo} alt="Kobe Cars Logo" width="150px" />
                 </div>
                 <div className="list-group my-3">
-
+                    <div className="my-3">
+                        <div className="d-flex">
+                            <h6 className="ms-2">Makes</h6>
+                        </div>
+                        <div className="col-11 row mx-auto d-flex ">
+                            {
+                                vehiclesMake.map(make => <VehicleMake
+                                    make={make}
+                                ></VehicleMake>)
+                            }
+                        </div>
+                    </div>
+                    <div className="my-3">
+                        <div className="d-flex">
+                            <h6 className="ms-2">Models</h6>
+                        </div>
+                        <div class="form-floating col-11 mx-auto">
+                            <select class="form-select p-0 ps-2" id="floatingSelect" aria-label="Floating label select example">
+                                <option selected>Models</option>
+                                {
+                                    vehiclesModel.map(model => <VehicleModel
+                                        model={model}
+                                    ></VehicleModel>)
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div className="my-3">
+                        <div className="d-flex">
+                            <h6 className="ms-2">Types</h6>
+                        </div>
+                        <div className="col-11 row mx-auto d-flex ">
+                            {
+                                vehiclesType.map(type => <VehicleType
+                                    type={type}
+                                ></VehicleType>)
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
 
