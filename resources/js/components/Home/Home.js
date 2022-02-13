@@ -5,6 +5,7 @@ import logo from '../../../images/kobe-cars.png';
 import VehicleMake from '../VehicleMake/VehicleMake';
 import VehicleModel from '../VehicleModel/VehicleModel';
 import VehicleType from '../VehicleType/VehicleType';
+import VehiclesInfo from '../VehiclesInfo/VehiclesInfo';
 
 
 const Home = () => {
@@ -96,7 +97,13 @@ const Home = () => {
                     </div>
                 </nav>
                 <div className="container-fluid px-4 mt-4">
-
+                    <div className="row mx-auto">
+                        {
+                            vehicles.map(vehicle => <VehiclesInfo
+                                vehicle={vehicle}
+                            />)
+                        }
+                    </div>
                 </div>
             </div>
         </div>
