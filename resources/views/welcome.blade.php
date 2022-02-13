@@ -8,12 +8,14 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" href="../css/app.css">
+        <script src="https://kit.fontawesome.com/3f16fb12e4.js" crossorigin="anonymous"></script>
 
     </head>
     <body>
-        <div class="app"></div>
+        <div id="app">
 
-        <script src="js/app.js"></script>
+        </div>
+        <script src="../js/app.js"></script>
     </body>
 </html>
