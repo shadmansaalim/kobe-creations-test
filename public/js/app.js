@@ -5405,22 +5405,29 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var Home = function Home() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
-      _useState2 = _slicedToArray(_useState, 2),
-      vehicles = _useState2[0],
-      setVehicles = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+var Home = function Home() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState2 = _slicedToArray(_useState, 2),
+      status = _useState2[0],
+      setStatus = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState4 = _slicedToArray(_useState3, 2),
-      toggled = _useState4[0],
-      setToggled = _useState4[1];
+      vehicles = _useState4[0],
+      setVehicles = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      toggled = _useState6[0],
+      setToggled = _useState6[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     fetch('/vehicle').then(function (res) {
       return res.json();
     }).then(function (data) {
-      return setVehicles(data.vehicles);
+      setVehicles(data.vehicles);
+      setStatus(data.status);
     });
   }, []); //Making separate arrays with Make, Model and Type for easy data use.
 
@@ -5453,113 +5460,125 @@ var Home = function Home() {
     _iterator.f();
   }
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-    className: toggled ? "d-flex toggled" : "d-flex",
-    id: "wrapper",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-      id: "sidebar-wrapper",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-        className: "text-center pt-4 pb-2 border-bottom",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
-          src: _images_kobe_cars_png__WEBPACK_IMPORTED_MODULE_2__["default"],
-          alt: "Kobe Cars Logo",
-          width: "150px"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-        className: "list-group my-3",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-          className: "my-3",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-            className: "d-flex",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h6", {
-              className: "ms-2",
-              children: "Makes"
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-            className: "col-11 row mx-auto d-flex ",
-            children: vehiclesMake.map(function (make) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_VehicleMake_VehicleMake__WEBPACK_IMPORTED_MODULE_3__["default"], {
-                make: make
-              });
-            })
-          })]
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
+    children: vehicles.length && vehiclesMake.length && vehiclesModel.length && vehiclesType.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+      className: toggled ? "d-flex toggled" : "d-flex",
+      id: "wrapper",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+        id: "sidebar-wrapper",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+          className: "text-center pt-4 pb-2 border-bottom",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
+            src: _images_kobe_cars_png__WEBPACK_IMPORTED_MODULE_2__["default"],
+            alt: "Kobe Cars Logo",
+            width: "150px"
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-          className: "my-3",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-            className: "d-flex",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h6", {
-              className: "ms-2",
-              children: "Models"
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-            className: "form-floating col-11 mx-auto",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("select", {
-              className: "form-select p-0 ps-2",
-              id: "floatingSelect",
-              "aria-label": "Floating label select example",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
-                defaultValue: true,
-                children: "Models"
-              }), vehiclesModel.map(function (model) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_VehicleModel_VehicleModel__WEBPACK_IMPORTED_MODULE_4__["default"], {
-                  model: model
+          className: "list-group my-3",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+            className: "my-3",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              className: "d-flex",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h6", {
+                className: "ms-2",
+                children: "Makes"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              className: "col-11 row mx-auto d-flex ",
+              children: vehiclesMake.map(function (make) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_VehicleMake_VehicleMake__WEBPACK_IMPORTED_MODULE_3__["default"], {
+                  make: make
                 });
-              })]
-            })
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-          className: "my-3",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-            className: "d-flex",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h6", {
-              className: "ms-2",
-              children: "Types"
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-            className: "col-11 row mx-auto d-flex ",
-            children: vehiclesType.map(function (type) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_VehicleType_VehicleType__WEBPACK_IMPORTED_MODULE_5__["default"], {
-                type: type
-              });
-            })
+              })
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+            className: "my-3",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              className: "d-flex",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h6", {
+                className: "ms-2",
+                children: "Models"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              className: "form-floating col-11 mx-auto",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("select", {
+                className: "form-select p-0 ps-2",
+                id: "floatingSelect",
+                "aria-label": "Floating label select example",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
+                  defaultValue: true,
+                  children: "Models"
+                }), vehiclesModel.map(function (model) {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_VehicleModel_VehicleModel__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                    model: model
+                  });
+                })]
+              })
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+            className: "my-3",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              className: "d-flex",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h6", {
+                className: "ms-2",
+                children: "Types"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              className: "col-11 row mx-auto d-flex ",
+              children: vehiclesType.map(function (type) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_VehicleType_VehicleType__WEBPACK_IMPORTED_MODULE_5__["default"], {
+                  type: type
+                });
+              })
+            })]
           })]
         })]
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-      id: "page-content-wrapper",
-      style: {
-        backgroundColor: '#f2f2f2'
-      },
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("nav", {
-        className: "navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-          className: "d-flex align-items-center",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("i", {
-            onClick: function onClick() {
-              return setToggled(!toggled);
-            },
-            className: "fas fa-align-left primary-text fs-4 me-3",
-            id: "menu-toggle",
-            style: {
-              color: '#007cc2'
-            }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h3", {
-            className: "m-0 text-uppercase project-title",
-            children: "KOBE CARS CREATION"
-          })]
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-        className: "container-fluid px-4 mt-4",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-          className: "row mx-auto",
-          children: vehicles.map(function (vehicle) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_VehiclesInfo_VehiclesInfo__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              vehicle: vehicle
-            });
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+        id: "page-content-wrapper",
+        style: {
+          backgroundColor: '#f2f2f2'
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("nav", {
+          className: "navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+            className: "d-flex align-items-center",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("i", {
+              onClick: function onClick() {
+                return setToggled(!toggled);
+              },
+              className: "fas fa-align-left primary-text fs-4 me-3",
+              id: "menu-toggle",
+              style: {
+                color: '#007cc2'
+              }
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h3", {
+              className: "m-0 text-uppercase project-title",
+              children: "KOBE CARS CREATION"
+            })]
           })
-        })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+          className: "container-fluid px-4 mt-4",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+            className: "row mx-auto",
+            children: vehicles.map(function (vehicle) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_VehiclesInfo_VehiclesInfo__WEBPACK_IMPORTED_MODULE_6__["default"], {
+                vehicle: vehicle
+              });
+            })
+          })
+        })]
       })]
-    })]
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+      className: "d-flex justify-content-center align-items-center vh-100",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+        "class": "spinner",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+          "class": "double-bounce1"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+          "class": "double-bounce2"
+        })]
+      })
+    })
   });
 };
 
@@ -10823,7 +10842,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ":root {\n    --main-bg-color: #007cc2;\n    --main-text-color: white;\n    --second-text-color:white;\n    --second-bg-color: #292b2c;\n  }\n  \n  .primary-text {\n    color: var(--main-text-color);\n  }\n  \n  .second-text {\n    color: var(--second-text-color);\n  }\n  \n  .primary-bg {\n    background-color: var(--main-bg-color);\n  }\n  \n  .secondary-bg {\n    background-color: var(--second-bg-color);\n  }\n  \n  .rounded-full {\n    border-radius: 100%;\n  }\n  \n  #wrapper {\n    overflow-x: hidden;\n  \n  }\n  \n  #sidebar-wrapper {\n    min-height: 100vh;\n    margin-left: -25rem;\n    transition: margin 0.25s ease-out;\n  }\n  \n  #sidebar-wrapper .sidebar-heading {\n    padding: 0.875rem 1.25rem;\n  \n  }\n  \n  #sidebar-wrapper .list-group {\n    width: 25rem;\n  }\n  \n  #page-content-wrapper {\n    min-width: 100vw;\n  }\n  \n  #wrapper.toggled #sidebar-wrapper {\n    margin-left: 0;\n  }\n  \n  #menu-toggle {\n    cursor: pointer;\n  }\n  \n  .list-group-item {\n    border: none;\n    padding: 20px 30px;\n  }\n  \n  .list-group-item.active {\n    background-color: transparent;\n    color: var(--main-text-color);\n    font-weight: bold;\n    border: none;\n  }\n\n  .box:hover{\n    background-color: whitesmoke;\n    cursor: pointer;\n  }\n\n  .logo{\n      width: 40px !important;\n      height: 25px !important;\n  }\n  \n  @media (min-width: 768px) {\n    #sidebar-wrapper {\n      margin-left: 0;\n    }\n  \n    #page-content-wrapper {\n      min-width: 0;\n      width: 100%;\n    }\n  \n    #wrapper.toggled #sidebar-wrapper {\n      margin-left: -25rem;\n    }\n  }\n\n  @media only screen and (max-width: 688px){\n      #sidebar-wrapper {\n        margin-left: -15rem;\n      }\n      #sidebar-wrapper .list-group {\n        width: 15rem;\n      }\n      #wrapper.toggled #sidebar-wrapper {\n        margin-left: 0rem;\n      }\n    }\n\n  .project-title{\n    font-family: 'Roboto', sans-serif;\n  }\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ":root {\n    --main-bg-color: #007cc2;\n    --main-text-color: white;\n    --second-text-color:white;\n    --second-bg-color: #292b2c;\n  }\n  \n  .primary-text {\n    color: var(--main-text-color);\n  }\n  \n  .second-text {\n    color: var(--second-text-color);\n  }\n  \n  .primary-bg {\n    background-color: var(--main-bg-color);\n  }\n  \n  .secondary-bg {\n    background-color: var(--second-bg-color);\n  }\n  \n  .rounded-full {\n    border-radius: 100%;\n  }\n  \n  #wrapper {\n    overflow-x: hidden;\n  \n  }\n  \n  #sidebar-wrapper {\n    min-height: 100vh;\n    margin-left: -25rem;\n    transition: margin 0.25s ease-out;\n  }\n  \n  #sidebar-wrapper .sidebar-heading {\n    padding: 0.875rem 1.25rem;\n  \n  }\n  \n  #sidebar-wrapper .list-group {\n    width: 25rem;\n  }\n  \n  #page-content-wrapper {\n    min-width: 100vw;\n  }\n  \n  #wrapper.toggled #sidebar-wrapper {\n    margin-left: 0;\n  }\n  \n  #menu-toggle {\n    cursor: pointer;\n  }\n  \n  .list-group-item {\n    border: none;\n    padding: 20px 30px;\n  }\n  \n  .list-group-item.active {\n    background-color: transparent;\n    color: var(--main-text-color);\n    font-weight: bold;\n    border: none;\n  }\n\n  .box:hover{\n    background-color: whitesmoke;\n    cursor: pointer;\n  }\n\n  .logo{\n      width: 40px !important;\n      height: 25px !important;\n  }\n  \n  @media (min-width: 768px) {\n    #sidebar-wrapper {\n      margin-left: 0;\n    }\n  \n    #page-content-wrapper {\n      min-width: 0;\n      width: 100%;\n    }\n  \n    #wrapper.toggled #sidebar-wrapper {\n      margin-left: -25rem;\n    }\n  }\n\n  @media only screen and (max-width: 688px){\n      #sidebar-wrapper {\n        margin-left: -15rem;\n      }\n      #sidebar-wrapper .list-group {\n        width: 15rem;\n      }\n      #wrapper.toggled #sidebar-wrapper {\n        margin-left: 0rem;\n      }\n    }\n\n  .project-title{\n    font-family: 'Roboto', sans-serif;\n  }\n\n\n\n  /* SPINNER CSS */\n  .spinner {\n    width: 50px;\n    height: 50px;\n  \n    position: relative;\n    margin: 100px auto;\n  }\n  \n  .double-bounce1, .double-bounce2 {\n    width: 100%;\n    height: 100%;\n    border-radius: 50%;\n    background-color: #333;\n    opacity: 0.6;\n    position: absolute;\n    top: 0;\n    left: 0;\n    \n    -webkit-animation: sk-bounce 2.0s infinite ease-in-out;\n    animation: sk-bounce 2.0s infinite ease-in-out;\n  }\n  \n  .double-bounce2 {\n    -webkit-animation-delay: -1.0s;\n    animation-delay: -1.0s;\n  }\n  \n  @-webkit-keyframes sk-bounce {\n    0%, 100% { -webkit-transform: scale(0.0) }\n    50% { -webkit-transform: scale(1.0) }\n  }\n  \n  @keyframes sk-bounce {\n    0%, 100% { \n      transform: scale(0.0);\n      -webkit-transform: scale(0.0);\n    } 50% { \n      transform: scale(1.0);\n      -webkit-transform: scale(1.0);\n    }\n  }", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
