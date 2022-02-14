@@ -8,14 +8,16 @@ import VehicleType from '../VehicleType/VehicleType';
 import VehiclesInfo from '../VehiclesInfo/VehiclesInfo';
 
 
+
 const Home = () => {
     const [vehicles, setVehicles] = useState([]);
     const [toggled, setToggled] = useState(false);
 
+
     useEffect(() => {
-        fetch('http://localhost/kobe-backend/vehicles.php')
+        fetch('/vehicle')
             .then(res => res.json())
-            .then(data => setVehicles(data))
+            .then(data => setVehicles(data.vehicles))
     }, [])
 
 
@@ -35,7 +37,6 @@ const Home = () => {
         }
     }
 
-    console.log(vehiclesType);
     return (
         <div className={toggled ? "d-flex toggled" : "d-flex"} id="wrapper">
 

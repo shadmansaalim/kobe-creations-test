@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Vehicle;
+
 
 class VehicleController extends Controller
 {
@@ -13,7 +15,8 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        //
+        $vehicle = Vehicle::all();
+        return response()->json(['status' => 200, 'vehicles' => $vehicle]);
     }
 
     /**

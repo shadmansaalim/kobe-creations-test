@@ -5417,10 +5417,10 @@ var Home = function Home() {
       setToggled = _useState4[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    fetch('http://localhost/kobe-backend/vehicles.php').then(function (res) {
+    fetch('/vehicle').then(function (res) {
       return res.json();
     }).then(function (data) {
-      return setVehicles(data);
+      return setVehicles(data.vehicles);
     });
   }, []); //Making separate arrays with Make, Model and Type for easy data use.
 
@@ -5453,7 +5453,6 @@ var Home = function Home() {
     _iterator.f();
   }
 
-  console.log(vehiclesType);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
     className: toggled ? "d-flex toggled" : "d-flex",
     id: "wrapper",
