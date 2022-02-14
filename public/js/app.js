@@ -5492,13 +5492,13 @@ var Home = function Home() {
               children: "Models"
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-            "class": "form-floating col-11 mx-auto",
+            className: "form-floating col-11 mx-auto",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("select", {
-              "class": "form-select p-0 ps-2",
+              className: "form-select p-0 ps-2",
               id: "floatingSelect",
               "aria-label": "Floating label select example",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
-                selected: true,
+                defaultValue: true,
                 children: "Models"
               }), vehiclesModel.map(function (model) {
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_VehicleModel_VehicleModel__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -5747,21 +5747,21 @@ var VehiclesInfo = function VehiclesInfo(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     className: "col-12 col-lg-4 mx-auto",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      "class": "card border-dark mb-3",
+      className: "card border-dark mb-3",
       style: {
         maxWidth: '18rem'
       },
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        "class": "card-header",
+        className: "card-header",
         children: ["Made by ", Make]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        "class": "card-body text-dark",
+        className: "card-body text-dark",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h6", {
-          "class": "card-title",
+          className: "card-title",
           children: ["Part Number : ", PartNo]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("small", {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("ul", {
-            "class": "card-text d-flex flex-column align-items-start",
+            className: "card-text d-flex flex-column align-items-start",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
               children: ["Model Number : ", Model]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {

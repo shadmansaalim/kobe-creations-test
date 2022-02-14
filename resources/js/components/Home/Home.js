@@ -61,9 +61,9 @@ const Home = () => {
                         <div className="d-flex">
                             <h6 className="ms-2">Models</h6>
                         </div>
-                        <div class="form-floating col-11 mx-auto">
-                            <select class="form-select p-0 ps-2" id="floatingSelect" aria-label="Floating label select example">
-                                <option selected>Models</option>
+                        <div className="form-floating col-11 mx-auto">
+                            <select className="form-select p-0 ps-2" id="floatingSelect" aria-label="Floating label select example">
+                                <option defaultValue>Models</option>
                                 {
                                     vehiclesModel.map(model => <VehicleModel
                                         model={model}

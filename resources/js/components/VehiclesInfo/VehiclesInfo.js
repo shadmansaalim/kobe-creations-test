@@ -4,12 +4,12 @@ const VehiclesInfo = ({ vehicle }) => {
     const { Make, Model, Type, PartNo } = vehicle;
     return (
         <div className="col-12 col-lg-4 mx-auto">
-            <div class="card border-dark mb-3" style={{ maxWidth: '18rem' }}>
-                <div class="card-header">Made by {Make}</div>
-                <div class="card-body text-dark">
-                    <h6 class="card-title">Part Number : {PartNo}</h6>
+            <div className="card border-dark mb-3" style={{ maxWidth: '18rem' }}>
+                <div className="card-header">Made by {Make}</div>
+                <div className="card-body text-dark">
+                    <h6 className="card-title">Part Number : {PartNo}</h6>
                     <small>
-                        <ul class="card-text d-flex flex-column align-items-start">
+                        <ul className="card-text d-flex flex-column align-items-start">
                             <li>
                                 Model Number : {Model}
                             </li>
