@@ -103,6 +103,7 @@ const Home = () => {
                                     <div className="col-11 row mx-auto d-flex ">
                                         {
                                             vehiclesMake.map(make => <VehicleMake
+                                                index={vehiclesMake.indexOf(make)}
                                                 make={make}
                                                 handleMakeClick={handleMakeClick}
                                             ></VehicleMake>)

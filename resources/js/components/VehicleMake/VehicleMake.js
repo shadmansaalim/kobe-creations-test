@@ -10,7 +10,7 @@ import carlogo8 from '../../../images/carlogo8.webp'
 import carlogo9 from '../../../images/carlogo9.webp'
 import carlogo10 from '../../../images/carlogo10.webp'
 
-const VehicleMake = ({ make, handleMakeClick }) => {
+const VehicleMake = ({ index, make, handleMakeClick }) => {
     //At start no click so default value false
     const [clicked, setClicked] = useState(false);
 
@@ -26,7 +26,58 @@ const VehicleMake = ({ make, handleMakeClick }) => {
         carlogo8,
         carlogo9,
         carlogo10,
+        carlogo1,
+        carlogo2,
+        carlogo3,
+        carlogo4,
+        carlogo5,
+        carlogo6,
+        carlogo7,
+        carlogo8,
+        carlogo9,
+        carlogo10,
+        carlogo1,
+        carlogo2,
+        carlogo3,
+        carlogo4,
+        carlogo5,
+        carlogo6,
+        carlogo7,
+        carlogo8,
+        carlogo9,
+        carlogo10,
+        carlogo1,
+        carlogo2,
+        carlogo3,
+        carlogo4,
+        carlogo5,
+        carlogo6,
+        carlogo7,
+        carlogo8,
+        carlogo9,
+        carlogo10,
+        carlogo1,
+        carlogo2,
+        carlogo3,
+        carlogo4,
+        carlogo5,
+        carlogo6,
+        carlogo7,
+        carlogo8,
+        carlogo9,
+        carlogo10,
+        carlogo1,
+        carlogo2,
+        carlogo3,
+        carlogo4,
+        carlogo5,
+        carlogo6,
+        carlogo7,
+        carlogo8,
+        carlogo9,
+        carlogo10,
     ]
+
     return (
         <div className={clicked ? "col-6 col-md-3 border border-dark p-2 box shadow-md" : "col-6 col-md-3 border p-2 box"}
             onClick={() => {
@@ -34,7 +85,9 @@ const VehicleMake = ({ make, handleMakeClick }) => {
                 setClicked(!clicked)
                 handleMakeClick(make)
             }}>
-            <img className="img-fluid logo" src={(dummyLogos[Math.floor(Math.random() * dummyLogos.length)])} alt="" />
+            <img className="img-fluid logo" src={
+                dummyLogos[index]
+            } alt="" />
             <br />
             <small className="text-muted" style={{
                 fontSize: '9px'
