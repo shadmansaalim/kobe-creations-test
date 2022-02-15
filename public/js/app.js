@@ -5585,6 +5585,7 @@ var Home = function Home() {
               className: "col-11 row mx-auto d-flex ",
               children: vehiclesType.map(function (type) {
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_VehicleType_VehicleType__WEBPACK_IMPORTED_MODULE_5__["default"], {
+                  index: vehiclesType.indexOf(type),
                   type: type
                 });
               })
@@ -5825,14 +5826,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var VehicleType = function VehicleType(_ref) {
-  var type = _ref.type;
+  var index = _ref.index,
+      type = _ref.type;
   //Dummy car types logo to use in UI for better look and UX
-  var dummyLogos = [_images_type1_webp__WEBPACK_IMPORTED_MODULE_1__["default"], _images_type2_webp__WEBPACK_IMPORTED_MODULE_2__["default"], _images_type3_webp__WEBPACK_IMPORTED_MODULE_3__["default"], _images_type4_webp__WEBPACK_IMPORTED_MODULE_4__["default"], _images_type5_webp__WEBPACK_IMPORTED_MODULE_5__["default"], _images_type6_webp__WEBPACK_IMPORTED_MODULE_6__["default"], _images_type7_webp__WEBPACK_IMPORTED_MODULE_7__["default"], _images_type8_webp__WEBPACK_IMPORTED_MODULE_8__["default"], _images_type9_webp__WEBPACK_IMPORTED_MODULE_9__["default"], _images_type10_webp__WEBPACK_IMPORTED_MODULE_10__["default"], _images_type11_webp__WEBPACK_IMPORTED_MODULE_11__["default"], _images_type12_webp__WEBPACK_IMPORTED_MODULE_12__["default"]];
+  var dummyLogos = [_images_type1_webp__WEBPACK_IMPORTED_MODULE_1__["default"], _images_type2_webp__WEBPACK_IMPORTED_MODULE_2__["default"], _images_type3_webp__WEBPACK_IMPORTED_MODULE_3__["default"], _images_type4_webp__WEBPACK_IMPORTED_MODULE_4__["default"], _images_type5_webp__WEBPACK_IMPORTED_MODULE_5__["default"], _images_type6_webp__WEBPACK_IMPORTED_MODULE_6__["default"], _images_type7_webp__WEBPACK_IMPORTED_MODULE_7__["default"], _images_type8_webp__WEBPACK_IMPORTED_MODULE_8__["default"], _images_type9_webp__WEBPACK_IMPORTED_MODULE_9__["default"], _images_type10_webp__WEBPACK_IMPORTED_MODULE_10__["default"], _images_type11_webp__WEBPACK_IMPORTED_MODULE_11__["default"], _images_type12_webp__WEBPACK_IMPORTED_MODULE_12__["default"], _images_type1_webp__WEBPACK_IMPORTED_MODULE_1__["default"], _images_type2_webp__WEBPACK_IMPORTED_MODULE_2__["default"], _images_type3_webp__WEBPACK_IMPORTED_MODULE_3__["default"], _images_type4_webp__WEBPACK_IMPORTED_MODULE_4__["default"], _images_type5_webp__WEBPACK_IMPORTED_MODULE_5__["default"], _images_type6_webp__WEBPACK_IMPORTED_MODULE_6__["default"], _images_type7_webp__WEBPACK_IMPORTED_MODULE_7__["default"], _images_type8_webp__WEBPACK_IMPORTED_MODULE_8__["default"], _images_type9_webp__WEBPACK_IMPORTED_MODULE_9__["default"], _images_type10_webp__WEBPACK_IMPORTED_MODULE_10__["default"], _images_type11_webp__WEBPACK_IMPORTED_MODULE_11__["default"], _images_type12_webp__WEBPACK_IMPORTED_MODULE_12__["default"]];
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)("div", {
     className: "col-6 col-md-4 border p-2 box",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("img", {
       className: "img-fluid logo",
-      src: dummyLogos[Math.floor(Math.random() * dummyLogos.length)],
+      src: dummyLogos[index],
       alt: ""
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("small", {
       className: "text-muted",

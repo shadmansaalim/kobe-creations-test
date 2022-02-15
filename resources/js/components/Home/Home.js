@@ -132,6 +132,7 @@ const Home = () => {
                                     <div className="col-11 row mx-auto d-flex ">
                                         {
                                             vehiclesType.map(type => <VehicleType
+                                                index={vehiclesType.indexOf(type)}
                                                 type={type}
                                             ></VehicleType>)
                                         }
