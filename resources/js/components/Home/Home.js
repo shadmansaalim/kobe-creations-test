@@ -6,11 +6,9 @@ import VehicleMake from '../VehicleMake/VehicleMake';
 import VehicleModel from '../VehicleModel/VehicleModel';
 import VehicleType from '../VehicleType/VehicleType';
 import VehiclesInfo from '../VehiclesInfo/VehiclesInfo';
-
-
+import ReactPaginate from 'react-paginate';
 
 const Home = () => {
-    const [status, setStatus] = useState(null);
     const [vehicles, setVehicles] = useState([]);
     const [toggled, setToggled] = useState(false);
 
@@ -18,10 +16,8 @@ const Home = () => {
     useEffect(() => {
         fetch('/vehicle')
             .then(res => res.json())
-            .then(data => {
-                setVehicles(data.vehicles)
-                setStatus(data.status);
-            })
+            .then(data => setVehicles(data.vehicles)
+            )
     }, [])
 
 
@@ -40,6 +36,27 @@ const Home = () => {
             vehiclesType.push(vehicle.Type)
         }
     }
+
+    //PAGINATION SETUP CODE
+
+    const [currentVehicles, setCurrentVehicles] = useState([...vehicles]);
+    const [pageCount, setPageCount] = useState(0);
+
+
+    const [itemOffset, setItemOffset] = useState(0);
+    const vehiclesPerPage = 30;
+
+    useEffect(() => {
+        const endOffset = itemOffset + vehiclesPerPage;
+        setCurrentVehicles(vehicles.slice(itemOffset, endOffset));
+        setPageCount(Math.ceil(vehicles.length / vehiclesPerPage));
+    }, [itemOffset, vehicles]);
+
+    // Invoke when user click to request another page.
+    const handlePageClick = (event) => {
+        const newOffset = (event.selected * vehiclesPerPage) % vehicles.length;
+        setItemOffset(newOffset);
+    };
 
     return (
         <>
@@ -105,14 +122,38 @@ const Home = () => {
                                     >KOBE CARS CREATION</h3>
                                 </div>
                             </nav>
-                            <div className="container-fluid px-4 mt-4">
+                            <div className="d-flex justify-content-center mt-3">
+                                {/* Calling the course pagination component for pagination */}
+                                <ReactPaginate
+                                    nextLabel="Next >"
+                                    onPageChange={handlePageClick}
+                                    pageRangeDisplayed={3}
+                                    marginPagesDisplayed={2}
+                                    pageCount={pageCount}
+                                    previousLabel="< Previous"
+                                    pageClassName="page-item"
+                                    pageLinkClassName="page-link"
+                                    previousClassName="page-item"
+                                    previousLinkClassName="page-link"
+                                    nextClassName="page-item"
+                                    nextLinkClassName="page-link"
+                                    breakLabel="..."
+                                    breakClassName="page-item"
+                                    breakLinkClassName="page-link"
+                                    containerClassName="pagination"
+                                    activeClassName="active"
+                                    renderOnZeroPageCount={null}
+                                />
+                            </div>
+                            <div className="container-fluid px-4 mt-5">
                                 <div className="row mx-auto">
                                     {
-                                        vehicles.map(vehicle => <VehiclesInfo
+                                        currentVehicles.map(vehicle => <VehiclesInfo
                                             vehicle={vehicle}
                                         />)
                                     }
                                 </div>
+
                             </div>
                         </div>
                     </div>
