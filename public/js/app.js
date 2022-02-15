@@ -5487,13 +5487,30 @@ var Home = function Home() {
 
 
   var handleMakeClick = function handleMakeClick(make) {
+    //Finding the vehicles that user clicked by make
     var selectedMakeVehicles = vehicles.filter(function (vehicle) {
       return vehicle.Make === make;
-    });
+    }); //Checking whether user clicked on any other make brand
 
     if (userSelected.length !== vehicles.length) {
-      var newSelected = [].concat(_toConsumableArray(userSelected), _toConsumableArray(selectedMakeVehicles));
-      setUserSelected(newSelected);
+      //Checking whether user is clicking second time for removing the filter or not
+      if (userSelected.filter(function (vehicle) {
+        return vehicle.Make === make;
+      }).length === 0) {
+        var newSelected = [].concat(_toConsumableArray(userSelected), _toConsumableArray(selectedMakeVehicles));
+        setUserSelected(newSelected);
+      } else {
+        var _newSelected = userSelected.filter(function (vehicle) {
+          return vehicle.Make !== make;
+        }); //Checking whether this is the last selected box or not so that if this is unselected we can display all the vehicles
+
+
+        if (_newSelected.length === 0) {
+          setUserSelected(vehicles);
+        } else {
+          setUserSelected(_newSelected);
+        }
+      }
     } else {
       setUserSelected(selectedMakeVehicles);
     }
@@ -5712,9 +5729,10 @@ var VehicleMake = function VehicleMake(_ref) {
 
   var dummyLogos = [_images_carlogo1_jpeg__WEBPACK_IMPORTED_MODULE_1__["default"], _images_carlogo2_webp__WEBPACK_IMPORTED_MODULE_2__["default"], _images_carlogo3_webp__WEBPACK_IMPORTED_MODULE_3__["default"], _images_carlogo4_webp__WEBPACK_IMPORTED_MODULE_4__["default"], _images_carlogo5_webp__WEBPACK_IMPORTED_MODULE_5__["default"], _images_carlogo6_webp__WEBPACK_IMPORTED_MODULE_6__["default"], _images_carlogo7_webp__WEBPACK_IMPORTED_MODULE_7__["default"], _images_carlogo8_webp__WEBPACK_IMPORTED_MODULE_8__["default"], _images_carlogo9_webp__WEBPACK_IMPORTED_MODULE_9__["default"], _images_carlogo10_webp__WEBPACK_IMPORTED_MODULE_10__["default"]];
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-    className: clicked ? "col-6 col-md-3 border border-dark p-2 box shadow-lg" : "col-6 col-md-3 border p-2 box",
+    className: clicked ? "col-6 col-md-3 border border-dark p-2 box shadow-md" : "col-6 col-md-3 border p-2 box",
     onClick: function onClick() {
-      setClicked(true);
+      //Toggling the click of user
+      setClicked(!clicked);
       handleMakeClick(make);
     },
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("img", {

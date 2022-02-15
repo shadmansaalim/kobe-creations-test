@@ -56,14 +56,32 @@ const Home = () => {
 
     //Make box functionality
     const handleMakeClick = (make) => {
+        //Finding the vehicles that user clicked by make
         const selectedMakeVehicles = vehicles.filter(vehicle => vehicle.Make === make);
+
+        //Checking whether user clicked on any other make brand
         if (userSelected.length !== vehicles.length) {
-            const newSelected = [...userSelected, ...selectedMakeVehicles]
-            setUserSelected(newSelected);
+            //Checking whether user is clicking second time for removing the filter or not
+
+            if ((userSelected.filter(vehicle => vehicle.Make === make)).length === 0) {
+                const newSelected = [...userSelected, ...selectedMakeVehicles]
+                setUserSelected(newSelected);
+            }
+            else {
+                const newSelected = userSelected.filter(vehicle => vehicle.Make !== make)
+                //Checking whether this is the last selected box or not so that if this is unselected we can display all the vehicles
+                if (newSelected.length === 0) {
+                    setUserSelected(vehicles);
+                }
+                else {
+                    setUserSelected(newSelected);
+                }
+            }
         }
         else {
             setUserSelected(selectedMakeVehicles);
         }
+
     }
 
     return (

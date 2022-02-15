@@ -28,9 +28,10 @@ const VehicleMake = ({ make, handleMakeClick }) => {
         carlogo10,
     ]
     return (
-        <div className={clicked ? "col-6 col-md-3 border border-dark p-2 box shadow-lg" : "col-6 col-md-3 border p-2 box"}
+        <div className={clicked ? "col-6 col-md-3 border border-dark p-2 box shadow-md" : "col-6 col-md-3 border p-2 box"}
             onClick={() => {
-                setClicked(true)
+                //Toggling the click of user
+                setClicked(!clicked)
                 handleMakeClick(make)
             }}>
             <img className="img-fluid logo" src={(dummyLogos[Math.floor(Math.random() * dummyLogos.length)])} alt="" />
