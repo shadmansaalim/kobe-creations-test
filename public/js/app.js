@@ -5390,8 +5390,6 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symb
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -5428,58 +5426,46 @@ var Home = function Home() {
       toggled = _useState4[0],
       setToggled = _useState4[1];
 
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState6 = _slicedToArray(_useState5, 2),
+      vehiclesMake = _useState6[0],
+      setVehiclesMake = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState8 = _slicedToArray(_useState7, 2),
+      vehiclesModel = _useState8[0],
+      setVehiclesModel = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState10 = _slicedToArray(_useState9, 2),
+      vehiclesType = _useState10[0],
+      setVehiclesType = _useState10[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     fetch('/vehicle').then(function (res) {
       return res.json();
     }).then(function (data) {
-      return setVehicles(data.vehicles);
+      setVehicles(data.vehicles);
+      setVehiclesMake(data.make);
+      setVehiclesModel(data.model);
+      setVehiclesType(data.type);
     });
-  }, []); //Making separate arrays with Make, Model and Type for easy data use.
+  }, []); //PAGINATION SETUP CODE
 
-  var vehiclesMake = [];
-  var vehiclesModel = [];
-  var vehiclesType = [];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(_toConsumableArray(vehicles)),
+      _useState12 = _slicedToArray(_useState11, 2),
+      currentVehicles = _useState12[0],
+      setCurrentVehicles = _useState12[1];
 
-  var _iterator = _createForOfIteratorHelper(vehicles),
-      _step;
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+      _useState14 = _slicedToArray(_useState13, 2),
+      pageCount = _useState14[0],
+      setPageCount = _useState14[1];
 
-  try {
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var vehicle = _step.value;
-
-      if (vehiclesMake.indexOf(vehicle.Make) === -1) {
-        vehiclesMake.push(vehicle.Make);
-      }
-
-      if (vehiclesModel.indexOf(vehicle.Model) === -1) {
-        vehiclesModel.push(vehicle.Model);
-      }
-
-      if (vehiclesType.indexOf(vehicle.Type) === -1) {
-        vehiclesType.push(vehicle.Type);
-      }
-    } //PAGINATION SETUP CODE
-
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
-  }
-
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(_toConsumableArray(vehicles)),
-      _useState6 = _slicedToArray(_useState5, 2),
-      currentVehicles = _useState6[0],
-      setCurrentVehicles = _useState6[1];
-
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
-      _useState8 = _slicedToArray(_useState7, 2),
-      pageCount = _useState8[0],
-      setPageCount = _useState8[1];
-
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
-      _useState10 = _slicedToArray(_useState9, 2),
-      itemOffset = _useState10[0],
-      setItemOffset = _useState10[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+      _useState16 = _slicedToArray(_useState15, 2),
+      itemOffset = _useState16[0],
+      setItemOffset = _useState16[1];
 
   var vehiclesPerPage = 30;
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
@@ -5491,6 +5477,14 @@ var Home = function Home() {
   var handlePageClick = function handlePageClick(event) {
     var newOffset = event.selected * vehiclesPerPage % vehicles.length;
     setItemOffset(newOffset);
+  }; //Make box functionality
+
+
+  var handleMakeClick = function handleMakeClick(make) {
+    var selectedMakeVehicles = vehicles.filter(function (vehicle) {
+      return vehicle.Make === make;
+    });
+    setVehicles(selectedMakeVehicles);
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
@@ -5520,7 +5514,8 @@ var Home = function Home() {
               className: "col-11 row mx-auto d-flex ",
               children: vehiclesMake.map(function (make) {
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_VehicleMake_VehicleMake__WEBPACK_IMPORTED_MODULE_3__["default"], {
-                  make: make
+                  make: make,
+                  handleMakeClick: handleMakeClick
                 });
               })
             })]
@@ -5681,11 +5676,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var VehicleMake = function VehicleMake(_ref) {
-  var make = _ref.make;
+  var make = _ref.make,
+      handleMakeClick = _ref.handleMakeClick;
   //Dummy car logos to use in UI for better look and UX
   var dummyLogos = [_images_carlogo1_jpeg__WEBPACK_IMPORTED_MODULE_1__["default"], _images_carlogo2_webp__WEBPACK_IMPORTED_MODULE_2__["default"], _images_carlogo3_webp__WEBPACK_IMPORTED_MODULE_3__["default"], _images_carlogo4_webp__WEBPACK_IMPORTED_MODULE_4__["default"], _images_carlogo5_webp__WEBPACK_IMPORTED_MODULE_5__["default"], _images_carlogo6_webp__WEBPACK_IMPORTED_MODULE_6__["default"], _images_carlogo7_webp__WEBPACK_IMPORTED_MODULE_7__["default"], _images_carlogo8_webp__WEBPACK_IMPORTED_MODULE_8__["default"], _images_carlogo9_webp__WEBPACK_IMPORTED_MODULE_9__["default"], _images_carlogo10_webp__WEBPACK_IMPORTED_MODULE_10__["default"]];
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
     className: "col-6 col-md-3 border p-2 box",
+    onClick: function onClick() {
+      return handleMakeClick(make);
+    },
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("img", {
       className: "img-fluid logo",
       src: dummyLogos[Math.floor(Math.random() * dummyLogos.length)],

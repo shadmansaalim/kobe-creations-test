@@ -11,31 +11,23 @@ import ReactPaginate from 'react-paginate';
 const Home = () => {
     const [vehicles, setVehicles] = useState([]);
     const [toggled, setToggled] = useState(false);
+    const [vehiclesMake, setVehiclesMake] = useState([]);
+    const [vehiclesModel, setVehiclesModel] = useState([]);
+    const [vehiclesType, setVehiclesType] = useState([]);
+
 
 
     useEffect(() => {
         fetch('/vehicle')
             .then(res => res.json())
-            .then(data => setVehicles(data.vehicles)
-            )
+            .then(data => {
+                setVehicles(data.vehicles);
+                setVehiclesMake(data.make);
+                setVehiclesModel(data.model);
+                setVehiclesType(data.type);
+            })
     }, [])
 
-
-    //Making separate arrays with Make, Model and Type for easy data use.
-    const vehiclesMake = [];
-    const vehiclesModel = [];
-    const vehiclesType = [];
-    for (const vehicle of vehicles) {
-        if (vehiclesMake.indexOf(vehicle.Make) === -1) {
-            vehiclesMake.push(vehicle.Make)
-        }
-        if (vehiclesModel.indexOf(vehicle.Model) === -1) {
-            vehiclesModel.push(vehicle.Model)
-        }
-        if (vehiclesType.indexOf(vehicle.Type) === -1) {
-            vehiclesType.push(vehicle.Type)
-        }
-    }
 
     //PAGINATION SETUP CODE
 
@@ -58,6 +50,13 @@ const Home = () => {
         setItemOffset(newOffset);
     };
 
+
+    //Make box functionality
+    const handleMakeClick = (make) => {
+        const selectedMakeVehicles = vehicles.filter(vehicle => vehicle.Make === make);
+        setVehicles(selectedMakeVehicles);
+    }
+
     return (
         <>
             {
@@ -78,6 +77,7 @@ const Home = () => {
                                         {
                                             vehiclesMake.map(make => <VehicleMake
                                                 make={make}
+                                                handleMakeClick={handleMakeClick}
                                             ></VehicleMake>)
                                         }
                                     </div>

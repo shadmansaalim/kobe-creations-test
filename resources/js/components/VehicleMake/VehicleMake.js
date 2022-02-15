@@ -10,7 +10,7 @@ import carlogo8 from '../../../images/carlogo8.webp'
 import carlogo9 from '../../../images/carlogo9.webp'
 import carlogo10 from '../../../images/carlogo10.webp'
 
-const VehicleMake = ({ make }) => {
+const VehicleMake = ({ make, handleMakeClick }) => {
     //Dummy car logos to use in UI for better look and UX
     const dummyLogos = [
         carlogo1,
@@ -25,7 +25,8 @@ const VehicleMake = ({ make }) => {
         carlogo10,
     ]
     return (
-        <div className="col-6 col-md-3 border p-2 box">
+        <div className="col-6 col-md-3 border p-2 box"
+            onClick={() => handleMakeClick(make)}>
             <img className="img-fluid logo" src={(dummyLogos[Math.floor(Math.random() * dummyLogos.length)])} alt="" />
             <br />
             <small className="text-muted" style={{

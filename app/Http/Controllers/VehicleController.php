@@ -15,8 +15,23 @@ class VehicleController extends Controller
      */
     public function index()
     {
+        // Getting all vehicles data from table
         $vehicle = Vehicle::all();
-        return response()->json(['status' => 200, 'vehicles' => $vehicle]);
+
+        //Getting the name of all the columns value and removing the duplicates and making them in an array
+        $makes = Vehicle::select('Make')->distinct()->get()->map(function($make){
+            return $make->Make;
+        });
+        $models = Vehicle::select('Model')->distinct()->get()->map(function($model){
+            return $model->Model;
+        });
+        $types = Vehicle::select('Type')->distinct()->get()->map(function($type){
+            return $type->Type;
+        });
+        
+        return response()->json(
+            ['vehicles' => $vehicle, 'make' => $makes, 'model' => $models, 'type' => $types ]
+        );
     }
 
     /**
