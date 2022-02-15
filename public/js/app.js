@@ -5546,7 +5546,7 @@ var Home = function Home() {
                   index: vehiclesMake.indexOf(make),
                   make: make,
                   handleMakeClick: handleMakeClick
-                });
+                }, vehiclesMake.indexOf(make));
               })
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
@@ -5569,7 +5569,7 @@ var Home = function Home() {
                 }), vehiclesModel.map(function (model) {
                   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_VehicleModel_VehicleModel__WEBPACK_IMPORTED_MODULE_4__["default"], {
                     model: model
-                  });
+                  }, vehiclesModel.indexOf(model));
                 })]
               })
             })]
@@ -5587,7 +5587,7 @@ var Home = function Home() {
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_VehicleType_VehicleType__WEBPACK_IMPORTED_MODULE_5__["default"], {
                   index: vehiclesType.indexOf(type),
                   type: type
-                });
+                }, vehiclesType.indexOf(type));
               })
             })]
           })]
@@ -5646,7 +5646,7 @@ var Home = function Home() {
             children: currentVehicles.map(function (vehicle) {
               return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_VehiclesInfo_VehiclesInfo__WEBPACK_IMPORTED_MODULE_6__["default"], {
                 vehicle: vehicle
-              });
+              }, currentVehicles.indexOf(vehicle));
             })
           })
         })]

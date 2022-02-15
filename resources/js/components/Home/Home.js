@@ -103,6 +103,7 @@ const Home = () => {
                                     <div className="col-11 row mx-auto d-flex ">
                                         {
                                             vehiclesMake.map(make => <VehicleMake
+                                                key={vehiclesMake.indexOf(make)}
                                                 index={vehiclesMake.indexOf(make)}
                                                 make={make}
                                                 handleMakeClick={handleMakeClick}
@@ -119,6 +120,7 @@ const Home = () => {
                                             <option defaultValue>Models</option>
                                             {
                                                 vehiclesModel.map(model => <VehicleModel
+                                                    key={vehiclesModel.indexOf(model)}
                                                     model={model}
                                                 ></VehicleModel>)
                                             }
@@ -132,6 +134,7 @@ const Home = () => {
                                     <div className="col-11 row mx-auto d-flex ">
                                         {
                                             vehiclesType.map(type => <VehicleType
+                                                key={vehiclesType.indexOf(type)}
                                                 index={vehiclesType.indexOf(type)}
                                                 type={type}
                                             ></VehicleType>)
@@ -181,6 +184,7 @@ const Home = () => {
                                 <div className="row">
                                     {
                                         currentVehicles.map(vehicle => <VehiclesInfo
+                                            key={currentVehicles.indexOf(vehicle)}
                                             vehicle={vehicle}
                                         />)
                                     }
