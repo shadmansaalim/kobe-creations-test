@@ -53,8 +53,8 @@ const Home = () => {
 
     //Make box functionality
     const handleMakeClick = (make) => {
-        const selectedMakeVehicles = vehicles.filter(vehicle => vehicle.Make === make);
-        setVehicles(selectedMakeVehicles);
+        // const selectedMakeVehicles = vehicles.filter(vehicle => vehicle.Make === make);
+        // setVehicles(selectedMakeVehicles);
     }
 
     return (
@@ -162,9 +162,9 @@ const Home = () => {
                     </div>
                     :
                     <div className="d-flex justify-content-center align-items-center vh-100">
-                        <div class="spinner">
-                            <div class="double-bounce1"></div>
-                            <div class="double-bounce2"></div>
+                        <div className="spinner">
+                            <div className="double-bounce1"></div>
+                            <div className="double-bounce2"></div>
                         </div>
                     </div>
 

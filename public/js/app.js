@@ -5480,11 +5480,8 @@ var Home = function Home() {
   }; //Make box functionality
 
 
-  var handleMakeClick = function handleMakeClick(make) {
-    var selectedMakeVehicles = vehicles.filter(function (vehicle) {
-      return vehicle.Make === make;
-    });
-    setVehicles(selectedMakeVehicles);
+  var handleMakeClick = function handleMakeClick(make) {// const selectedMakeVehicles = vehicles.filter(vehicle => vehicle.Make === make);
+    // setVehicles(selectedMakeVehicles);
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
@@ -5623,11 +5620,11 @@ var Home = function Home() {
     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
       className: "d-flex justify-content-center align-items-center vh-100",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
-        "class": "spinner",
+        className: "spinner",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-          "class": "double-bounce1"
+          className: "double-bounce1"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-          "class": "double-bounce2"
+          className: "double-bounce2"
         })]
       })
     })
