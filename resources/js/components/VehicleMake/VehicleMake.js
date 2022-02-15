@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import carlogo1 from '../../../images/carlogo1.jpeg'
 import carlogo2 from '../../../images/carlogo2.webp'
 import carlogo3 from '../../../images/carlogo3.webp'
@@ -11,6 +11,9 @@ import carlogo9 from '../../../images/carlogo9.webp'
 import carlogo10 from '../../../images/carlogo10.webp'
 
 const VehicleMake = ({ make, handleMakeClick }) => {
+    //At start no click so default value false
+    const [clicked, setClicked] = useState(false);
+
     //Dummy car logos to use in UI for better look and UX
     const dummyLogos = [
         carlogo1,
@@ -25,8 +28,11 @@ const VehicleMake = ({ make, handleMakeClick }) => {
         carlogo10,
     ]
     return (
-        <div className="col-6 col-md-3 border p-2 box"
-            onClick={() => handleMakeClick(make)}>
+        <div className={clicked ? "col-6 col-md-3 border border-dark p-2 box shadow-lg" : "col-6 col-md-3 border p-2 box"}
+            onClick={() => {
+                setClicked(true)
+                handleMakeClick(make)
+            }}>
             <img className="img-fluid logo" src={(dummyLogos[Math.floor(Math.random() * dummyLogos.length)])} alt="" />
             <br />
             <small className="text-muted" style={{

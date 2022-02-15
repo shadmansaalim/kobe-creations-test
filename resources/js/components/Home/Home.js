@@ -24,7 +24,7 @@ const Home = () => {
                 setVehicles(data.vehicles);
                 setVehiclesMake(data.make);
                 setVehiclesModel(data.model);
-                setVehiclesType(data.type);
+                setVehiclesType(data.type)
             })
     }, [])
 

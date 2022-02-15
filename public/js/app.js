@@ -5661,6 +5661,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _images_carlogo9_webp__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../images/carlogo9.webp */ "./resources/images/carlogo9.webp");
 /* harmony import */ var _images_carlogo10_webp__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../images/carlogo10.webp */ "./resources/images/carlogo10.webp");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -5678,12 +5690,20 @@ __webpack_require__.r(__webpack_exports__);
 var VehicleMake = function VehicleMake(_ref) {
   var make = _ref.make,
       handleMakeClick = _ref.handleMakeClick;
-  //Dummy car logos to use in UI for better look and UX
+
+  //At start no click so default value false
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      clicked = _useState2[0],
+      setClicked = _useState2[1]; //Dummy car logos to use in UI for better look and UX
+
+
   var dummyLogos = [_images_carlogo1_jpeg__WEBPACK_IMPORTED_MODULE_1__["default"], _images_carlogo2_webp__WEBPACK_IMPORTED_MODULE_2__["default"], _images_carlogo3_webp__WEBPACK_IMPORTED_MODULE_3__["default"], _images_carlogo4_webp__WEBPACK_IMPORTED_MODULE_4__["default"], _images_carlogo5_webp__WEBPACK_IMPORTED_MODULE_5__["default"], _images_carlogo6_webp__WEBPACK_IMPORTED_MODULE_6__["default"], _images_carlogo7_webp__WEBPACK_IMPORTED_MODULE_7__["default"], _images_carlogo8_webp__WEBPACK_IMPORTED_MODULE_8__["default"], _images_carlogo9_webp__WEBPACK_IMPORTED_MODULE_9__["default"], _images_carlogo10_webp__WEBPACK_IMPORTED_MODULE_10__["default"]];
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-    className: "col-6 col-md-3 border p-2 box",
+    className: clicked ? "col-6 col-md-3 border border-dark p-2 box shadow-lg" : "col-6 col-md-3 border p-2 box",
     onClick: function onClick() {
-      return handleMakeClick(make);
+      setClicked(true);
+      handleMakeClick(make);
     },
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("img", {
       className: "img-fluid logo",
@@ -10895,7 +10915,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ":root {\n    --main-bg-color: #007cc2;\n    --main-text-color: white;\n    --second-text-color:white;\n    --second-bg-color: #292b2c;\n  }\n  \n  .primary-text {\n    color: var(--main-text-color);\n  }\n  \n  .second-text {\n    color: var(--second-text-color);\n  }\n  \n  .primary-bg {\n    background-color: var(--main-bg-color);\n  }\n  \n  .secondary-bg {\n    background-color: var(--second-bg-color);\n  }\n  \n  .rounded-full {\n    border-radius: 100%;\n  }\n  \n  #wrapper {\n    overflow-x: hidden;\n  \n  }\n  \n  #sidebar-wrapper {\n    min-height: 100vh;\n    margin-left: -25rem;\n    transition: margin 0.25s ease-out;\n  }\n  \n  #sidebar-wrapper .sidebar-heading {\n    padding: 0.875rem 1.25rem;\n  \n  }\n  \n  #sidebar-wrapper .list-group {\n    width: 25rem;\n  }\n  \n  #page-content-wrapper {\n    min-width: 100vw;\n  }\n  \n  #wrapper.toggled #sidebar-wrapper {\n    margin-left: 0;\n  }\n  \n  #menu-toggle {\n    cursor: pointer;\n  }\n  \n  .list-group-item {\n    border: none;\n    padding: 20px 30px;\n  }\n  \n  .list-group-item.active {\n    background-color: transparent;\n    color: var(--main-text-color);\n    font-weight: bold;\n    border: none;\n  }\n\n  .box:hover{\n    background-color: whitesmoke;\n    cursor: pointer;\n  }\n\n  .logo{\n      width: 40px !important;\n      height: 25px !important;\n  }\n  \n  @media (min-width: 768px) {\n    #sidebar-wrapper {\n      margin-left: 0;\n    }\n  \n    #page-content-wrapper {\n      min-width: 0;\n      width: 100%;\n    }\n  \n    #wrapper.toggled #sidebar-wrapper {\n      margin-left: -25rem;\n    }\n  }\n\n  @media only screen and (max-width: 688px){\n      #sidebar-wrapper {\n        margin-left: -15rem;\n      }\n      #sidebar-wrapper .list-group {\n        width: 15rem;\n      }\n      #wrapper.toggled #sidebar-wrapper {\n        margin-left: 0rem;\n      }\n    }\n\n  .project-title{\n    font-family: 'Roboto', sans-serif;\n  }\n\n\n\n  /* SPINNER CSS */\n  .spinner {\n    width: 50px;\n    height: 50px;\n  \n    position: relative;\n    margin: 100px auto;\n  }\n  \n  .double-bounce1, .double-bounce2 {\n    width: 100%;\n    height: 100%;\n    border-radius: 50%;\n    background-color: #333;\n    opacity: 0.6;\n    position: absolute;\n    top: 0;\n    left: 0;\n    \n    -webkit-animation: sk-bounce 2.0s infinite ease-in-out;\n    animation: sk-bounce 2.0s infinite ease-in-out;\n  }\n  \n  .double-bounce2 {\n    -webkit-animation-delay: -1.0s;\n    animation-delay: -1.0s;\n  }\n  \n  @-webkit-keyframes sk-bounce {\n    0%, 100% { -webkit-transform: scale(0.0) }\n    50% { -webkit-transform: scale(1.0) }\n  }\n  \n  @keyframes sk-bounce {\n    0%, 100% { \n      transform: scale(0.0);\n      -webkit-transform: scale(0.0);\n    } 50% { \n      transform: scale(1.0);\n      -webkit-transform: scale(1.0);\n    }\n  }", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ":root {\n    --main-bg-color: #007cc2;\n    --main-text-color: white;\n    --second-text-color:white;\n    --second-bg-color: #292b2c;\n  }\n  \n  .primary-text {\n    color: var(--main-text-color);\n  }\n  \n  .second-text {\n    color: var(--second-text-color);\n  }\n  \n  .primary-bg {\n    background-color: var(--main-bg-color);\n  }\n  \n  .secondary-bg {\n    background-color: var(--second-bg-color);\n  }\n  \n  .rounded-full {\n    border-radius: 100%;\n  }\n  \n  #wrapper {\n    overflow-x: hidden;\n  \n  }\n  \n  #sidebar-wrapper {\n    min-height: 100vh;\n    margin-left: -25rem;\n    transition: margin 0.25s ease-out;\n  }\n  \n  #sidebar-wrapper .sidebar-heading {\n    padding: 0.875rem 1.25rem;\n  \n  }\n  \n  #sidebar-wrapper .list-group {\n    width: 25rem;\n  }\n  \n  #page-content-wrapper {\n    min-width: 100vw;\n  }\n  \n  #wrapper.toggled #sidebar-wrapper {\n    margin-left: 0;\n  }\n  \n  #menu-toggle {\n    cursor: pointer;\n  }\n  \n  .list-group-item {\n    border: none;\n    padding: 20px 30px;\n  }\n  \n  .list-group-item.active {\n    background-color: transparent;\n    color: var(--main-text-color);\n    font-weight: bold;\n    border: none;\n  }\n\n  .box{\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .box:hover{\n    background-color: whitesmoke;\n    cursor: pointer;\n  }\n\n  .logo{\n      width: 40px !important;\n      height: 25px !important;\n  }\n  \n  @media (min-width: 768px) {\n    #sidebar-wrapper {\n      margin-left: 0;\n    }\n  \n    #page-content-wrapper {\n      min-width: 0;\n      width: 100%;\n    }\n  \n    #wrapper.toggled #sidebar-wrapper {\n      margin-left: -25rem;\n    }\n  }\n\n  @media only screen and (max-width: 688px){\n      #sidebar-wrapper {\n        margin-left: -15rem;\n      }\n      #sidebar-wrapper .list-group {\n        width: 15rem;\n      }\n      #wrapper.toggled #sidebar-wrapper {\n        margin-left: 0rem;\n      }\n    }\n\n  .project-title{\n    font-family: 'Roboto', sans-serif;\n  }\n\n\n\n  /* SPINNER CSS */\n  .spinner {\n    width: 50px;\n    height: 50px;\n  \n    position: relative;\n    margin: 100px auto;\n  }\n  \n  .double-bounce1, .double-bounce2 {\n    width: 100%;\n    height: 100%;\n    border-radius: 50%;\n    background-color: #333;\n    opacity: 0.6;\n    position: absolute;\n    top: 0;\n    left: 0;\n    \n    -webkit-animation: sk-bounce 2.0s infinite ease-in-out;\n    animation: sk-bounce 2.0s infinite ease-in-out;\n  }\n  \n  .double-bounce2 {\n    -webkit-animation-delay: -1.0s;\n    animation-delay: -1.0s;\n  }\n  \n  @-webkit-keyframes sk-bounce {\n    0%, 100% { -webkit-transform: scale(0.0) }\n    50% { -webkit-transform: scale(1.0) }\n  }\n  \n  @keyframes sk-bounce {\n    0%, 100% { \n      transform: scale(0.0);\n      -webkit-transform: scale(0.0);\n    } 50% { \n      transform: scale(1.0);\n      -webkit-transform: scale(1.0);\n    }\n  }", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

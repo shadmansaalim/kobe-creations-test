@@ -72,6 +72,13 @@
     border: none;
   }
 
+  .box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   .box:hover{
     background-color: whitesmoke;
     cursor: pointer;
