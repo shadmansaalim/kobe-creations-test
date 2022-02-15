@@ -5441,47 +5441,62 @@ var Home = function Home() {
       vehiclesType = _useState10[0],
       setVehiclesType = _useState10[1];
 
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState12 = _slicedToArray(_useState11, 2),
+      userSelected = _useState12[0],
+      setUserSelected = _useState12[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     fetch('/vehicle').then(function (res) {
       return res.json();
     }).then(function (data) {
       setVehicles(data.vehicles);
+      setUserSelected(data.vehicles);
       setVehiclesMake(data.make);
       setVehiclesModel(data.model);
       setVehiclesType(data.type);
     });
   }, []); //PAGINATION SETUP CODE
 
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(_toConsumableArray(vehicles)),
-      _useState12 = _slicedToArray(_useState11, 2),
-      currentVehicles = _useState12[0],
-      setCurrentVehicles = _useState12[1];
-
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(userSelected),
       _useState14 = _slicedToArray(_useState13, 2),
-      pageCount = _useState14[0],
-      setPageCount = _useState14[1];
+      currentVehicles = _useState14[0],
+      setCurrentVehicles = _useState14[1];
 
   var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
       _useState16 = _slicedToArray(_useState15, 2),
-      itemOffset = _useState16[0],
-      setItemOffset = _useState16[1];
+      pageCount = _useState16[0],
+      setPageCount = _useState16[1];
+
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+      _useState18 = _slicedToArray(_useState17, 2),
+      itemOffset = _useState18[0],
+      setItemOffset = _useState18[1];
 
   var vehiclesPerPage = 30;
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var endOffset = itemOffset + vehiclesPerPage;
-    setCurrentVehicles(vehicles.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(vehicles.length / vehiclesPerPage));
-  }, [itemOffset, vehicles]); // Invoke when user click to request another page.
+    setCurrentVehicles(userSelected.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(userSelected.length / vehiclesPerPage));
+  }, [itemOffset, userSelected]); // Invoke when user click to request another page.
 
   var handlePageClick = function handlePageClick(event) {
-    var newOffset = event.selected * vehiclesPerPage % vehicles.length;
+    var newOffset = event.selected * vehiclesPerPage % userSelected.length;
     setItemOffset(newOffset);
   }; //Make box functionality
 
 
-  var handleMakeClick = function handleMakeClick(make) {// const selectedMakeVehicles = vehicles.filter(vehicle => vehicle.Make === make);
-    // setVehicles(selectedMakeVehicles);
+  var handleMakeClick = function handleMakeClick(make) {
+    var selectedMakeVehicles = vehicles.filter(function (vehicle) {
+      return vehicle.Make === make;
+    });
+
+    if (userSelected.length !== vehicles.length) {
+      var newSelected = [].concat(_toConsumableArray(userSelected), _toConsumableArray(selectedMakeVehicles));
+      setUserSelected(newSelected);
+    } else {
+      setUserSelected(selectedMakeVehicles);
+    }
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {

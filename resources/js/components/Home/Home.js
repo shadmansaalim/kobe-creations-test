@@ -16,12 +16,15 @@ const Home = () => {
     const [vehiclesType, setVehiclesType] = useState([]);
 
 
+    const [userSelected, setUserSelected] = useState([]);
+
 
     useEffect(() => {
         fetch('/vehicle')
             .then(res => res.json())
             .then(data => {
                 setVehicles(data.vehicles);
+                setUserSelected(data.vehicles);
                 setVehiclesMake(data.make);
                 setVehiclesModel(data.model);
                 setVehiclesType(data.type)
@@ -31,7 +34,7 @@ const Home = () => {
 
     //PAGINATION SETUP CODE
 
-    const [currentVehicles, setCurrentVehicles] = useState([...vehicles]);
+    const [currentVehicles, setCurrentVehicles] = useState(userSelected);
     const [pageCount, setPageCount] = useState(0);
 
 
@@ -40,21 +43,27 @@ const Home = () => {
 
     useEffect(() => {
         const endOffset = itemOffset + vehiclesPerPage;
-        setCurrentVehicles(vehicles.slice(itemOffset, endOffset));
-        setPageCount(Math.ceil(vehicles.length / vehiclesPerPage));
-    }, [itemOffset, vehicles]);
+        setCurrentVehicles(userSelected.slice(itemOffset, endOffset));
+        setPageCount(Math.ceil(userSelected.length / vehiclesPerPage));
+    }, [itemOffset, userSelected]);
 
     // Invoke when user click to request another page.
     const handlePageClick = (event) => {
-        const newOffset = (event.selected * vehiclesPerPage) % vehicles.length;
+        const newOffset = (event.selected * vehiclesPerPage) % userSelected.length;
         setItemOffset(newOffset);
     };
 
 
     //Make box functionality
     const handleMakeClick = (make) => {
-        // const selectedMakeVehicles = vehicles.filter(vehicle => vehicle.Make === make);
-        // setVehicles(selectedMakeVehicles);
+        const selectedMakeVehicles = vehicles.filter(vehicle => vehicle.Make === make);
+        if (userSelected.length !== vehicles.length) {
+            const newSelected = [...userSelected, ...selectedMakeVehicles]
+            setUserSelected(newSelected);
+        }
+        else {
+            setUserSelected(selectedMakeVehicles);
+        }
     }
 
     return (
