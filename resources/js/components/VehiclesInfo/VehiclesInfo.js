@@ -3,8 +3,8 @@ import React from 'react';
 const VehiclesInfo = ({ vehicle }) => {
     const { Make, Model, Type, PartNo } = vehicle;
     return (
-        <div className="col-12 col-lg-4 mx-auto">
-            <div className="card border-dark mb-3" style={{ maxWidth: '18rem' }}>
+        <div className="col-12 col-lg-6 col-xl-4">
+            <div className="card border-dark mb-3">
                 <div className="card-header">Made by {Make}</div>
                 <div className="card-body text-dark">
                     <h6 className="card-title">Part Number : {PartNo}</h6>

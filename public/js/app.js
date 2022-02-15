@@ -5590,14 +5590,16 @@ var Home = function Home() {
             })]
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-          className: "d-flex justify-content-center mt-3",
+          className: "container-fluid px-4"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+          className: "d-flex justify-content-center mx-auto",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)((react_paginate__WEBPACK_IMPORTED_MODULE_7___default()), {
-            nextLabel: "Next >",
+            nextLabel: ">",
             onPageChange: handlePageClick,
             pageRangeDisplayed: 3,
             marginPagesDisplayed: 2,
             pageCount: pageCount,
-            previousLabel: "< Previous",
+            previousLabel: "<",
             pageClassName: "page-item",
             pageLinkClassName: "page-link",
             previousClassName: "page-item",
@@ -5614,7 +5616,7 @@ var Home = function Home() {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
           className: "container-fluid px-4 mt-5",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-            className: "row mx-auto",
+            className: "row",
             children: currentVehicles.map(function (vehicle) {
               return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_VehiclesInfo_VehiclesInfo__WEBPACK_IMPORTED_MODULE_6__["default"], {
                 vehicle: vehicle
@@ -5819,12 +5821,9 @@ var VehiclesInfo = function VehiclesInfo(_ref) {
       Type = vehicle.Type,
       PartNo = vehicle.PartNo;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    className: "col-12 col-lg-4 mx-auto",
+    className: "col-12 col-lg-6 col-xl-4",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
       className: "card border-dark mb-3",
-      style: {
-        maxWidth: '18rem'
-      },
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
         className: "card-header",
         children: ["Made by ", Make]

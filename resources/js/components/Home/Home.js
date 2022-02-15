@@ -122,15 +122,18 @@ const Home = () => {
                                     >KOBE CARS CREATION</h3>
                                 </div>
                             </nav>
-                            <div className="d-flex justify-content-center mt-3">
+                            <div className="container-fluid px-4">
+
+                            </div>
+                            <div className="d-flex justify-content-center mx-auto">
                                 {/* Calling the course pagination component for pagination */}
                                 <ReactPaginate
-                                    nextLabel="Next >"
+                                    nextLabel=">"
                                     onPageChange={handlePageClick}
                                     pageRangeDisplayed={3}
                                     marginPagesDisplayed={2}
                                     pageCount={pageCount}
-                                    previousLabel="< Previous"
+                                    previousLabel="<"
                                     pageClassName="page-item"
                                     pageLinkClassName="page-link"
                                     previousClassName="page-item"
@@ -146,7 +149,7 @@ const Home = () => {
                                 />
                             </div>
                             <div className="container-fluid px-4 mt-5">
-                                <div className="row mx-auto">
+                                <div className="row">
                                     {
                                         currentVehicles.map(vehicle => <VehiclesInfo
                                             vehicle={vehicle}
