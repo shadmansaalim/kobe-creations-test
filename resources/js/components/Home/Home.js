@@ -7,6 +7,7 @@ import VehicleModel from '../VehicleModel/VehicleModel';
 import VehicleType from '../VehicleType/VehicleType';
 import VehiclesInfo from '../VehiclesInfo/VehiclesInfo';
 import ReactPaginate from 'react-paginate';
+import notFound from '../../../images/not-found.png';
 
 const Home = () => {
     const [vehicles, setVehicles] = useState([]);
@@ -159,6 +160,8 @@ const Home = () => {
             setUserSelected(selectedMakeVehicles);
         }
 
+        window.scrollTo(0, 0);
+
     }
 
     //Make box functionality
@@ -253,7 +256,7 @@ const Home = () => {
             setTypes([type]);
             setUserSelected(selectedTypeVehicles);
         }
-
+        window.scrollTo(0, 0);
     }
 
 
@@ -270,6 +273,7 @@ const Home = () => {
             const newSelected = vehicles.filter(vehicle => vehicle.Model === model);
             setUserSelected(newSelected);
         }
+        window.scrollTo(0, 0);
     }
     return (
         <>
@@ -371,15 +375,27 @@ const Home = () => {
                                 />
                             </div>
                             <div className="container-fluid px-4 mt-5">
-                                <div className="row">
-                                    {
-                                        currentVehicles.map(vehicle => <VehiclesInfo
-                                            key={currentVehicles.indexOf(vehicle)}
-                                            vehicle={vehicle}
-                                        />)
-                                    }
-                                </div>
+                                {
+                                    userSelected.length
+                                        ?
+                                        <div className="row">
+                                            {
 
+                                                currentVehicles.map(vehicle => <VehiclesInfo
+                                                    key={currentVehicles.indexOf(vehicle)}
+                                                    vehicle={vehicle}
+                                                />)
+
+                                            }
+                                        </div>
+                                        :
+                                        <div >
+                                            <h4 className="text-center fw-bold">No Vehicles Available Based On Your Filter</h4>
+                                            <div className="d-flex justify-content-center align-items-center">
+                                                <img className="img-fluid col-11 col-md-9 col-lg-6 mx-auto" src={notFound} alt="" />
+                                            </div>
+                                        </div>
+                                }
                             </div>
                         </div>
                     </div>
