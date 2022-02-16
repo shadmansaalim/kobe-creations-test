@@ -5932,7 +5932,9 @@ var Home = function Home() {
                 id: "floatingSelect",
                 "aria-label": "Floating label select example",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("option", {
+                  disabled: true,
                   defaultValue: true,
+                  selected: true,
                   children: "Models"
                 }), vehiclesModel.map(function (model) {
                   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_VehicleModel_VehicleModel__WEBPACK_IMPORTED_MODULE_4__["default"], {

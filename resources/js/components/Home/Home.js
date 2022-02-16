@@ -310,7 +310,7 @@ const Home = () => {
                                         <select onChange={
                                             handleModelOnChange
                                         } className="form-select p-0 ps-2" id="floatingSelect" aria-label="Floating label select example">
-                                            <option defaultValue>Models</option>
+                                            <option disabled defaultValue selected>Models</option>
                                             {
                                                 vehiclesModel.map(model => <VehicleModel
                                                     key={vehiclesModel.indexOf(model)}
