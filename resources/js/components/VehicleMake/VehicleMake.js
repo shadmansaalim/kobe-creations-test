@@ -79,17 +79,17 @@ const VehicleMake = ({ index, make, handleMakeClick }) => {
     ]
 
     return (
-        <div className={clicked ? "col-6 col-md-3 border border-dark p-2 box shadow-md" : "col-6 col-md-3 border p-2 box"}
+        <div className={clicked ? "col-6 col-md-3 border border-dark p-2 box shadow-md m-1" : "col-6 col-md-3 border p-2 box m-1"}
             onClick={() => {
                 //Toggling the click of user
                 setClicked(!clicked)
-                handleMakeClick(make)
+                handleMakeClick(make, !clicked)
             }}>
             <img className="img-fluid logo" src={
                 dummyLogos[index]
             } alt="" />
             <br />
-            <small className="text-muted" style={{
+            <small className="text-muted text-center" style={{
                 fontSize: '9px'
             }}>{make}</small>
         </div>

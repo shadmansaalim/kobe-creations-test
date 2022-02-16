@@ -5486,7 +5486,7 @@ var Home = function Home() {
   }; //Make box functionality
 
 
-  var handleMakeClick = function handleMakeClick(make) {
+  var handleMakeClick = function handleMakeClick(make, clicked) {
     //Finding the vehicles that user clicked by make
     var selectedMakeVehicles = vehicles.filter(function (vehicle) {
       return vehicle.Make === make;
@@ -5494,9 +5494,7 @@ var Home = function Home() {
 
     if (userSelected.length !== vehicles.length) {
       //Checking whether user is clicking second time for removing the filter or not
-      if (userSelected.filter(function (vehicle) {
-        return vehicle.Make === make;
-      }).length === 0) {
+      if (clicked) {
         var newSelected = [].concat(_toConsumableArray(userSelected), _toConsumableArray(selectedMakeVehicles));
         setUserSelected(newSelected);
       } else {
@@ -5514,6 +5512,39 @@ var Home = function Home() {
     } else {
       setUserSelected(selectedMakeVehicles);
     }
+  }; //Make box functionality
+
+
+  var handleTypeClick = function handleTypeClick(type, clicked) {
+    //Finding the vehicles that user clicked by type
+    var selectedTypeVehicles = vehicles.filter(function (vehicle) {
+      return vehicle.Type === type;
+    }); //Checking whether user clicked on any other type of vehicle
+
+    if (userSelected.length !== vehicles.length) {
+      //Checking whether user is clicking second time for removing the filter or not
+      if (clicked) {
+        var newSelected = userSelected.filter(function (vehicle) {
+          return vehicle.Type === type;
+        });
+        setUserSelected(newSelected);
+      } else {
+        var _newSelected2 = userSelected.filter(function (vehicle) {
+          return vehicle.Type !== type;
+        }); //Checking whether this is the last selected box or not so that if this is unselected we can display all the vehicles
+
+
+        if (_newSelected2.length === 0) {
+          setUserSelected(vehicles);
+        } else {
+          setUserSelected(_newSelected2);
+        }
+      }
+    } else {
+      setUserSelected(selectedTypeVehicles);
+    }
+
+    console.log(clicked);
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
@@ -5540,7 +5571,7 @@ var Home = function Home() {
                 children: "Makes"
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-              className: "col-11 row mx-auto d-flex ",
+              className: "row mx-auto col-11",
               children: vehiclesMake.map(function (make) {
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_VehicleMake_VehicleMake__WEBPACK_IMPORTED_MODULE_3__["default"], {
                   index: vehiclesMake.indexOf(make),
@@ -5582,11 +5613,12 @@ var Home = function Home() {
                 children: "Types"
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-              className: "col-11 row mx-auto d-flex ",
+              className: "row col-11 mx-auto",
               children: vehiclesType.map(function (type) {
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_VehicleType_VehicleType__WEBPACK_IMPORTED_MODULE_5__["default"], {
                   index: vehiclesType.indexOf(type),
-                  type: type
+                  type: type,
+                  handleTypeClick: handleTypeClick
                 }, vehiclesType.indexOf(type));
               })
             })]
@@ -5732,18 +5764,18 @@ var VehicleMake = function VehicleMake(_ref) {
 
   var dummyLogos = [_images_carlogo1_jpeg__WEBPACK_IMPORTED_MODULE_1__["default"], _images_carlogo2_webp__WEBPACK_IMPORTED_MODULE_2__["default"], _images_carlogo3_webp__WEBPACK_IMPORTED_MODULE_3__["default"], _images_carlogo4_webp__WEBPACK_IMPORTED_MODULE_4__["default"], _images_carlogo5_webp__WEBPACK_IMPORTED_MODULE_5__["default"], _images_carlogo6_webp__WEBPACK_IMPORTED_MODULE_6__["default"], _images_carlogo7_webp__WEBPACK_IMPORTED_MODULE_7__["default"], _images_carlogo8_webp__WEBPACK_IMPORTED_MODULE_8__["default"], _images_carlogo9_webp__WEBPACK_IMPORTED_MODULE_9__["default"], _images_carlogo10_webp__WEBPACK_IMPORTED_MODULE_10__["default"], _images_carlogo1_jpeg__WEBPACK_IMPORTED_MODULE_1__["default"], _images_carlogo2_webp__WEBPACK_IMPORTED_MODULE_2__["default"], _images_carlogo3_webp__WEBPACK_IMPORTED_MODULE_3__["default"], _images_carlogo4_webp__WEBPACK_IMPORTED_MODULE_4__["default"], _images_carlogo5_webp__WEBPACK_IMPORTED_MODULE_5__["default"], _images_carlogo6_webp__WEBPACK_IMPORTED_MODULE_6__["default"], _images_carlogo7_webp__WEBPACK_IMPORTED_MODULE_7__["default"], _images_carlogo8_webp__WEBPACK_IMPORTED_MODULE_8__["default"], _images_carlogo9_webp__WEBPACK_IMPORTED_MODULE_9__["default"], _images_carlogo10_webp__WEBPACK_IMPORTED_MODULE_10__["default"], _images_carlogo1_jpeg__WEBPACK_IMPORTED_MODULE_1__["default"], _images_carlogo2_webp__WEBPACK_IMPORTED_MODULE_2__["default"], _images_carlogo3_webp__WEBPACK_IMPORTED_MODULE_3__["default"], _images_carlogo4_webp__WEBPACK_IMPORTED_MODULE_4__["default"], _images_carlogo5_webp__WEBPACK_IMPORTED_MODULE_5__["default"], _images_carlogo6_webp__WEBPACK_IMPORTED_MODULE_6__["default"], _images_carlogo7_webp__WEBPACK_IMPORTED_MODULE_7__["default"], _images_carlogo8_webp__WEBPACK_IMPORTED_MODULE_8__["default"], _images_carlogo9_webp__WEBPACK_IMPORTED_MODULE_9__["default"], _images_carlogo10_webp__WEBPACK_IMPORTED_MODULE_10__["default"], _images_carlogo1_jpeg__WEBPACK_IMPORTED_MODULE_1__["default"], _images_carlogo2_webp__WEBPACK_IMPORTED_MODULE_2__["default"], _images_carlogo3_webp__WEBPACK_IMPORTED_MODULE_3__["default"], _images_carlogo4_webp__WEBPACK_IMPORTED_MODULE_4__["default"], _images_carlogo5_webp__WEBPACK_IMPORTED_MODULE_5__["default"], _images_carlogo6_webp__WEBPACK_IMPORTED_MODULE_6__["default"], _images_carlogo7_webp__WEBPACK_IMPORTED_MODULE_7__["default"], _images_carlogo8_webp__WEBPACK_IMPORTED_MODULE_8__["default"], _images_carlogo9_webp__WEBPACK_IMPORTED_MODULE_9__["default"], _images_carlogo10_webp__WEBPACK_IMPORTED_MODULE_10__["default"], _images_carlogo1_jpeg__WEBPACK_IMPORTED_MODULE_1__["default"], _images_carlogo2_webp__WEBPACK_IMPORTED_MODULE_2__["default"], _images_carlogo3_webp__WEBPACK_IMPORTED_MODULE_3__["default"], _images_carlogo4_webp__WEBPACK_IMPORTED_MODULE_4__["default"], _images_carlogo5_webp__WEBPACK_IMPORTED_MODULE_5__["default"], _images_carlogo6_webp__WEBPACK_IMPORTED_MODULE_6__["default"], _images_carlogo7_webp__WEBPACK_IMPORTED_MODULE_7__["default"], _images_carlogo8_webp__WEBPACK_IMPORTED_MODULE_8__["default"], _images_carlogo9_webp__WEBPACK_IMPORTED_MODULE_9__["default"], _images_carlogo10_webp__WEBPACK_IMPORTED_MODULE_10__["default"], _images_carlogo1_jpeg__WEBPACK_IMPORTED_MODULE_1__["default"], _images_carlogo2_webp__WEBPACK_IMPORTED_MODULE_2__["default"], _images_carlogo3_webp__WEBPACK_IMPORTED_MODULE_3__["default"], _images_carlogo4_webp__WEBPACK_IMPORTED_MODULE_4__["default"], _images_carlogo5_webp__WEBPACK_IMPORTED_MODULE_5__["default"], _images_carlogo6_webp__WEBPACK_IMPORTED_MODULE_6__["default"], _images_carlogo7_webp__WEBPACK_IMPORTED_MODULE_7__["default"], _images_carlogo8_webp__WEBPACK_IMPORTED_MODULE_8__["default"], _images_carlogo9_webp__WEBPACK_IMPORTED_MODULE_9__["default"], _images_carlogo10_webp__WEBPACK_IMPORTED_MODULE_10__["default"]];
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-    className: clicked ? "col-6 col-md-3 border border-dark p-2 box shadow-md" : "col-6 col-md-3 border p-2 box",
+    className: clicked ? "col-6 col-md-3 border border-dark p-2 box shadow-md m-1" : "col-6 col-md-3 border p-2 box m-1",
     onClick: function onClick() {
       //Toggling the click of user
       setClicked(!clicked);
-      handleMakeClick(make);
+      handleMakeClick(make, !clicked);
     },
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("img", {
       className: "img-fluid logo",
       src: dummyLogos[index],
       alt: ""
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("small", {
-      className: "text-muted",
+      className: "text-muted text-center",
       style: {
         fontSize: '9px'
       },
@@ -5809,6 +5841,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _images_type11_webp__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../images/type11.webp */ "./resources/images/type11.webp");
 /* harmony import */ var _images_type12_webp__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../images/type12.webp */ "./resources/images/type12.webp");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -5827,17 +5871,30 @@ __webpack_require__.r(__webpack_exports__);
 
 var VehicleType = function VehicleType(_ref) {
   var index = _ref.index,
-      type = _ref.type;
-  //Dummy car types logo to use in UI for better look and UX
+      type = _ref.type,
+      handleTypeClick = _ref.handleTypeClick;
+
+  //At start no click so default value false
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      clicked = _useState2[0],
+      setClicked = _useState2[1]; //Dummy car types logo to use in UI for better look and UX
+
+
   var dummyLogos = [_images_type1_webp__WEBPACK_IMPORTED_MODULE_1__["default"], _images_type2_webp__WEBPACK_IMPORTED_MODULE_2__["default"], _images_type3_webp__WEBPACK_IMPORTED_MODULE_3__["default"], _images_type4_webp__WEBPACK_IMPORTED_MODULE_4__["default"], _images_type5_webp__WEBPACK_IMPORTED_MODULE_5__["default"], _images_type6_webp__WEBPACK_IMPORTED_MODULE_6__["default"], _images_type7_webp__WEBPACK_IMPORTED_MODULE_7__["default"], _images_type8_webp__WEBPACK_IMPORTED_MODULE_8__["default"], _images_type9_webp__WEBPACK_IMPORTED_MODULE_9__["default"], _images_type10_webp__WEBPACK_IMPORTED_MODULE_10__["default"], _images_type11_webp__WEBPACK_IMPORTED_MODULE_11__["default"], _images_type12_webp__WEBPACK_IMPORTED_MODULE_12__["default"], _images_type1_webp__WEBPACK_IMPORTED_MODULE_1__["default"], _images_type2_webp__WEBPACK_IMPORTED_MODULE_2__["default"], _images_type3_webp__WEBPACK_IMPORTED_MODULE_3__["default"], _images_type4_webp__WEBPACK_IMPORTED_MODULE_4__["default"], _images_type5_webp__WEBPACK_IMPORTED_MODULE_5__["default"], _images_type6_webp__WEBPACK_IMPORTED_MODULE_6__["default"], _images_type7_webp__WEBPACK_IMPORTED_MODULE_7__["default"], _images_type8_webp__WEBPACK_IMPORTED_MODULE_8__["default"], _images_type9_webp__WEBPACK_IMPORTED_MODULE_9__["default"], _images_type10_webp__WEBPACK_IMPORTED_MODULE_10__["default"], _images_type11_webp__WEBPACK_IMPORTED_MODULE_11__["default"], _images_type12_webp__WEBPACK_IMPORTED_MODULE_12__["default"]];
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)("div", {
-    className: "col-6 col-md-4 border p-2 box",
+    className: clicked ? "col-6 col-md-4 border border-dark shadow-md p-2 box m-1" : "col-6 col-md-4 border p-2 box m-1",
+    onClick: function onClick() {
+      //Toggling the click of user
+      setClicked(!clicked);
+      handleTypeClick(type, !clicked);
+    },
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("img", {
       className: "img-fluid logo",
       src: dummyLogos[index],
       alt: ""
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("small", {
-      className: "text-muted",
+      className: "text-muted text-center",
       style: {
         fontSize: '9px'
       },
@@ -10949,7 +11006,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ":root {\n    --main-bg-color: #007cc2;\n    --main-text-color: white;\n    --second-text-color:white;\n    --second-bg-color: #292b2c;\n  }\n  \n  .primary-text {\n    color: var(--main-text-color);\n  }\n  \n  .second-text {\n    color: var(--second-text-color);\n  }\n  \n  .primary-bg {\n    background-color: var(--main-bg-color);\n  }\n  \n  .secondary-bg {\n    background-color: var(--second-bg-color);\n  }\n  \n  .rounded-full {\n    border-radius: 100%;\n  }\n  \n  #wrapper {\n    overflow-x: hidden;\n  \n  }\n  \n  #sidebar-wrapper {\n    min-height: 100vh;\n    margin-left: -25rem;\n    transition: margin 0.25s ease-out;\n  }\n  \n  #sidebar-wrapper .sidebar-heading {\n    padding: 0.875rem 1.25rem;\n  \n  }\n  \n  #sidebar-wrapper .list-group {\n    width: 25rem;\n  }\n  \n  #page-content-wrapper {\n    min-width: 100vw;\n  }\n  \n  #wrapper.toggled #sidebar-wrapper {\n    margin-left: 0;\n  }\n  \n  #menu-toggle {\n    cursor: pointer;\n  }\n  \n  .list-group-item {\n    border: none;\n    padding: 20px 30px;\n  }\n  \n  .list-group-item.active {\n    background-color: transparent;\n    color: var(--main-text-color);\n    font-weight: bold;\n    border: none;\n  }\n\n  .box{\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .box:hover{\n    background-color: whitesmoke;\n    cursor: pointer;\n  }\n\n  .logo{\n      width: 40px !important;\n      height: 25px !important;\n  }\n  \n  @media (min-width: 768px) {\n    #sidebar-wrapper {\n      margin-left: 0;\n    }\n  \n    #page-content-wrapper {\n      min-width: 0;\n      width: 100%;\n    }\n  \n    #wrapper.toggled #sidebar-wrapper {\n      margin-left: -25rem;\n    }\n  }\n\n  @media only screen and (max-width: 688px){\n      #sidebar-wrapper {\n        margin-left: -15rem;\n      }\n      #sidebar-wrapper .list-group {\n        width: 15rem;\n      }\n      #wrapper.toggled #sidebar-wrapper {\n        margin-left: 0rem;\n      }\n    }\n\n  .project-title{\n    font-family: 'Roboto', sans-serif;\n  }\n\n\n\n  /* SPINNER CSS */\n  .spinner {\n    width: 50px;\n    height: 50px;\n  \n    position: relative;\n    margin: 100px auto;\n  }\n  \n  .double-bounce1, .double-bounce2 {\n    width: 100%;\n    height: 100%;\n    border-radius: 50%;\n    background-color: #333;\n    opacity: 0.6;\n    position: absolute;\n    top: 0;\n    left: 0;\n    \n    -webkit-animation: sk-bounce 2.0s infinite ease-in-out;\n    animation: sk-bounce 2.0s infinite ease-in-out;\n  }\n  \n  .double-bounce2 {\n    -webkit-animation-delay: -1.0s;\n    animation-delay: -1.0s;\n  }\n  \n  @-webkit-keyframes sk-bounce {\n    0%, 100% { -webkit-transform: scale(0.0) }\n    50% { -webkit-transform: scale(1.0) }\n  }\n  \n  @keyframes sk-bounce {\n    0%, 100% { \n      transform: scale(0.0);\n      -webkit-transform: scale(0.0);\n    } 50% { \n      transform: scale(1.0);\n      -webkit-transform: scale(1.0);\n    }\n  }", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ":root {\n    --main-bg-color: #007cc2;\n    --main-text-color: white;\n    --second-text-color:white;\n    --second-bg-color: #292b2c;\n  }\n  \n  .primary-text {\n    color: var(--main-text-color);\n  }\n  \n  .second-text {\n    color: var(--second-text-color);\n  }\n  \n  .primary-bg {\n    background-color: var(--main-bg-color);\n  }\n  \n  .secondary-bg {\n    background-color: var(--second-bg-color);\n  }\n  \n  .rounded-full {\n    border-radius: 100%;\n  }\n  \n  #wrapper {\n    overflow-x: hidden;\n  \n  }\n  \n  #sidebar-wrapper {\n    min-height: 100vh;\n    margin-left: -25rem;\n    transition: margin 0.25s ease-out;\n  }\n  \n  #sidebar-wrapper .sidebar-heading {\n    padding: 0.875rem 1.25rem;\n  \n  }\n  \n  #sidebar-wrapper .list-group {\n    width: 25rem;\n  }\n  \n  #page-content-wrapper {\n    min-width: 100vw;\n  }\n  \n  #wrapper.toggled #sidebar-wrapper {\n    margin-left: 0;\n  }\n  \n  #menu-toggle {\n    cursor: pointer;\n  }\n  \n  .list-group-item {\n    border: none;\n    padding: 20px 30px;\n  }\n  \n  .list-group-item.active {\n    background-color: transparent;\n    color: var(--main-text-color);\n    font-weight: bold;\n    border: none;\n  }\n\n  .box{\n    width: 80px;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .box:hover{\n    background-color: whitesmoke;\n    cursor: pointer;\n  }\n\n  .logo{\n      width: 40px !important;\n      height: 25px !important;\n  }\n  \n  @media (min-width: 768px) {\n    #sidebar-wrapper {\n      margin-left: 0;\n    }\n  \n    #page-content-wrapper {\n      min-width: 0;\n      width: 100%;\n    }\n  \n    #wrapper.toggled #sidebar-wrapper {\n      margin-left: -25rem;\n    }\n  }\n\n  @media only screen and (max-width: 688px){\n      #sidebar-wrapper {\n        margin-left: -15rem;\n      }\n      #sidebar-wrapper .list-group {\n        width: 15rem;\n      }\n      #wrapper.toggled #sidebar-wrapper {\n        margin-left: 0rem;\n      }\n    }\n\n  .project-title{\n    font-family: 'Roboto', sans-serif;\n  }\n\n\n\n  /* SPINNER CSS */\n  .spinner {\n    width: 50px;\n    height: 50px;\n  \n    position: relative;\n    margin: 100px auto;\n  }\n  \n  .double-bounce1, .double-bounce2 {\n    width: 100%;\n    height: 100%;\n    border-radius: 50%;\n    background-color: #333;\n    opacity: 0.6;\n    position: absolute;\n    top: 0;\n    left: 0;\n    \n    -webkit-animation: sk-bounce 2.0s infinite ease-in-out;\n    animation: sk-bounce 2.0s infinite ease-in-out;\n  }\n  \n  .double-bounce2 {\n    -webkit-animation-delay: -1.0s;\n    animation-delay: -1.0s;\n  }\n  \n  @-webkit-keyframes sk-bounce {\n    0%, 100% { -webkit-transform: scale(0.0) }\n    50% { -webkit-transform: scale(1.0) }\n  }\n  \n  @keyframes sk-bounce {\n    0%, 100% { \n      transform: scale(0.0);\n      -webkit-transform: scale(0.0);\n    } 50% { \n      transform: scale(1.0);\n      -webkit-transform: scale(1.0);\n    }\n  }\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

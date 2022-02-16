@@ -55,15 +55,17 @@ const Home = () => {
 
 
     //Make box functionality
-    const handleMakeClick = (make) => {
+    const handleMakeClick = (make, clicked) => {
         //Finding the vehicles that user clicked by make
         const selectedMakeVehicles = vehicles.filter(vehicle => vehicle.Make === make);
+
 
         //Checking whether user clicked on any other make brand
         if (userSelected.length !== vehicles.length) {
             //Checking whether user is clicking second time for removing the filter or not
 
-            if ((userSelected.filter(vehicle => vehicle.Make === make)).length === 0) {
+
+            if (clicked) {
                 const newSelected = [...userSelected, ...selectedMakeVehicles]
                 setUserSelected(newSelected);
             }
@@ -84,6 +86,40 @@ const Home = () => {
 
     }
 
+    //Make box functionality
+    const handleTypeClick = (type, clicked) => {
+        //Finding the vehicles that user clicked by type
+        const selectedTypeVehicles = vehicles.filter(vehicle => vehicle.Type === type);
+
+
+        //Checking whether user clicked on any other type of vehicle
+        if (userSelected.length !== vehicles.length) {
+            //Checking whether user is clicking second time for removing the filter or not
+
+
+            if (clicked) {
+                const newSelected = userSelected.filter(vehicle => vehicle.Type === type)
+                setUserSelected(newSelected);
+            }
+            else {
+                const newSelected = userSelected.filter(vehicle => vehicle.Type !== type)
+                //Checking whether this is the last selected box or not so that if this is unselected we can display all the vehicles
+                if (newSelected.length === 0) {
+                    setUserSelected(vehicles);
+                }
+                else {
+                    setUserSelected(newSelected);
+                }
+            }
+        }
+        else {
+            setUserSelected(selectedTypeVehicles);
+        }
+
+        console.log(clicked)
+
+    }
+
     return (
         <>
             {
@@ -100,7 +136,7 @@ const Home = () => {
                                     <div className="d-flex">
                                         <h6 className="ms-2">Makes</h6>
                                     </div>
-                                    <div className="col-11 row mx-auto d-flex ">
+                                    <div className="row mx-auto col-11">
                                         {
                                             vehiclesMake.map(make => <VehicleMake
                                                 key={vehiclesMake.indexOf(make)}
@@ -131,12 +167,13 @@ const Home = () => {
                                     <div className="d-flex">
                                         <h6 className="ms-2">Types</h6>
                                     </div>
-                                    <div className="col-11 row mx-auto d-flex ">
+                                    <div className="row col-11 mx-auto">
                                         {
                                             vehiclesType.map(type => <VehicleType
                                                 key={vehiclesType.indexOf(type)}
                                                 index={vehiclesType.indexOf(type)}
                                                 type={type}
+                                                handleTypeClick={handleTypeClick}
                                             ></VehicleType>)
                                         }
                                     </div>

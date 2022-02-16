@@ -73,6 +73,7 @@
   }
 
   .box{
+    width: 80px;
     display: flex;
     flex-direction: column;
     justify-content: center;
