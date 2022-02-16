@@ -209,6 +209,12 @@ const Home = () => {
     }
 
 
+    //Model Drop Down Functionality
+    const handleModelOnChange = (e) => {
+        const model = e.target.value;
+        const newSelected = userSelected.filter(vehicle => vehicle.Model = model);
+        setUserSelected(newSelected);
+    }
     return (
         <>
             {
@@ -241,7 +247,9 @@ const Home = () => {
                                         <h6 className="ms-2">Models</h6>
                                     </div>
                                     <div className="form-floating col-11 mx-auto">
-                                        <select className="form-select p-0 ps-2" id="floatingSelect" aria-label="Floating label select example">
+                                        <select onChange={
+                                            handleModelOnChange
+                                        } className="form-select p-0 ps-2" id="floatingSelect" aria-label="Floating label select example">
                                             <option defaultValue>Models</option>
                                             {
                                                 vehiclesModel.map(model => <VehicleModel

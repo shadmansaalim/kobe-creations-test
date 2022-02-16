@@ -5789,6 +5789,15 @@ var Home = function Home() {
       setTypes([type]);
       setUserSelected(selectedTypeVehicles);
     }
+  }; //Model Drop Down Functionality
+
+
+  var handleModelOnChange = function handleModelOnChange(e) {
+    var model = e.target.value;
+    var newSelected = userSelected.filter(function (vehicle) {
+      return vehicle.Model = model;
+    });
+    setUserSelected(newSelected);
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
@@ -5835,6 +5844,7 @@ var Home = function Home() {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
               className: "form-floating col-11 mx-auto",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("select", {
+                onChange: handleModelOnChange,
                 className: "form-select p-0 ps-2",
                 id: "floatingSelect",
                 "aria-label": "Floating label select example",
