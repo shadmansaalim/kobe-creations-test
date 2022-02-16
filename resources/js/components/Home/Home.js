@@ -19,6 +19,10 @@ const Home = () => {
     const [userSelected, setUserSelected] = useState([]);
 
 
+    const [makes, setMakes] = useState([]);
+    const [types, setTypes] = useState([]);
+
+
     useEffect(() => {
         fetch('/vehicle')
             .then(res => res.json())
@@ -66,14 +70,56 @@ const Home = () => {
 
 
             if (clicked) {
-                const newSelected = [...userSelected, ...selectedMakeVehicles]
-                setUserSelected(newSelected);
+                const newMakes = [...makes, make];
+                setMakes(newMakes);
+                if (types.length) {
+                    let makesPartNo = [];
+                    let typesPartNo = []
+                    for (const t of types) {
+                        (vehicles.filter(vehicle => vehicle.Type === t)).forEach(vehicle => {
+                            makesPartNo.push(vehicle.PartNo)
+                        });
+                    }
+                    for (const m of newMakes) {
+                        (vehicles.filter(vehicle => vehicle.Make === m)).forEach(vehicle => {
+                            typesPartNo.push(vehicle.PartNo)
+                        });
+                    }
+
+                    const commonPartNo = makesPartNo.filter(value => typesPartNo.includes(value));
+
+
+                    let newSelected = [];
+
+                    for (const number of commonPartNo) {
+                        newSelected.push(vehicles.find(vehicle => vehicle.PartNo === number));
+                    }
+
+                    setUserSelected(newSelected);
+                }
+                else {
+                    const newSelected = vehicles.filter(vehicle => vehicle.Make === make)
+                    setUserSelected([...userSelected, ...newSelected]);
+                }
             }
             else {
+                setMakes(makes.filter(m => m !== make));
                 const newSelected = userSelected.filter(vehicle => vehicle.Make !== make)
                 //Checking whether this is the last selected box or not so that if this is unselected we can display all the vehicles
                 if (newSelected.length === 0) {
-                    setUserSelected(vehicles);
+                    if (types.length) {
+                        let typesVehicles = [];
+                        for (const t of types) {
+                            (vehicles.filter(vehicle => vehicle.Type === t)).forEach(vehicle => {
+                                typesVehicles.push(vehicle)
+                            });
+                        }
+
+                        setUserSelected(typesVehicles);
+                    }
+                    else {
+                        setUserSelected(vehicles);
+                    }
                 }
                 else {
                     setUserSelected(newSelected);
@@ -81,6 +127,7 @@ const Home = () => {
             }
         }
         else {
+            setMakes([make]);
             setUserSelected(selectedMakeVehicles);
         }
 
@@ -98,14 +145,56 @@ const Home = () => {
 
 
             if (clicked) {
-                const newSelected = userSelected.filter(vehicle => vehicle.Type === type)
-                setUserSelected(newSelected);
+                const newTypes = [...types, type];
+                setTypes(newTypes);
+                if (makes.length) {
+                    let makesPartNo = [];
+                    let typesPartNo = []
+                    for (const m of makes) {
+                        (vehicles.filter(vehicle => vehicle.Make === m)).forEach(vehicle => {
+                            makesPartNo.push(vehicle.PartNo)
+                        });
+                    }
+                    for (const t of newTypes) {
+                        (vehicles.filter(vehicle => vehicle.Type === t)).forEach(vehicle => {
+                            typesPartNo.push(vehicle.PartNo)
+                        });
+                    }
+
+                    const commonPartNo = makesPartNo.filter(value => typesPartNo.includes(value));
+
+                    let newSelected = [];
+
+                    for (const number of commonPartNo) {
+                        newSelected.push(vehicles.find(vehicle => vehicle.PartNo === number));
+                    }
+
+                    setUserSelected(newSelected);
+                }
+                else {
+                    const newSelected = vehicles.filter(vehicle => vehicle.Type === type)
+                    setUserSelected([...userSelected, ...newSelected]);
+                }
             }
             else {
+                setTypes(types.filter(t => t !== type));
                 const newSelected = userSelected.filter(vehicle => vehicle.Type !== type)
+
                 //Checking whether this is the last selected box or not so that if this is unselected we can display all the vehicles
                 if (newSelected.length === 0) {
-                    setUserSelected(vehicles);
+                    if (makes.length) {
+                        let makesVehicles = [];
+                        for (const m of makes) {
+                            (vehicles.filter(vehicle => vehicle.Make === m)).forEach(vehicle => {
+                                makesVehicles.push(vehicle)
+                            });
+                        }
+
+                        setUserSelected(makesVehicles);
+                    }
+                    else {
+                        setUserSelected(vehicles);
+                    }
                 }
                 else {
                     setUserSelected(newSelected);
@@ -113,12 +202,12 @@ const Home = () => {
             }
         }
         else {
+            setTypes([type]);
             setUserSelected(selectedTypeVehicles);
         }
 
-        console.log(clicked)
-
     }
+
 
     return (
         <>

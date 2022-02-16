@@ -5382,6 +5382,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_paginate__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-paginate */ "./node_modules/react-paginate/dist/react-paginate.js");
 /* harmony import */ var react_paginate__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_paginate__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -5446,6 +5448,16 @@ var Home = function Home() {
       userSelected = _useState12[0],
       setUserSelected = _useState12[1];
 
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState14 = _slicedToArray(_useState13, 2),
+      makes = _useState14[0],
+      setMakes = _useState14[1];
+
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState16 = _slicedToArray(_useState15, 2),
+      types = _useState16[0],
+      setTypes = _useState16[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     fetch('/vehicle').then(function (res) {
       return res.json();
@@ -5458,20 +5470,20 @@ var Home = function Home() {
     });
   }, []); //PAGINATION SETUP CODE
 
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(userSelected),
-      _useState14 = _slicedToArray(_useState13, 2),
-      currentVehicles = _useState14[0],
-      setCurrentVehicles = _useState14[1];
-
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
-      _useState16 = _slicedToArray(_useState15, 2),
-      pageCount = _useState16[0],
-      setPageCount = _useState16[1];
-
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(userSelected),
       _useState18 = _slicedToArray(_useState17, 2),
-      itemOffset = _useState18[0],
-      setItemOffset = _useState18[1];
+      currentVehicles = _useState18[0],
+      setCurrentVehicles = _useState18[1];
+
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+      _useState20 = _slicedToArray(_useState19, 2),
+      pageCount = _useState20[0],
+      setPageCount = _useState20[1];
+
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+      _useState22 = _slicedToArray(_useState21, 2),
+      itemOffset = _useState22[0],
+      setItemOffset = _useState22[1];
 
   var vehiclesPerPage = 30;
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
@@ -5495,21 +5507,139 @@ var Home = function Home() {
     if (userSelected.length !== vehicles.length) {
       //Checking whether user is clicking second time for removing the filter or not
       if (clicked) {
-        var newSelected = [].concat(_toConsumableArray(userSelected), _toConsumableArray(selectedMakeVehicles));
-        setUserSelected(newSelected);
+        var newMakes = [].concat(_toConsumableArray(makes), [make]);
+        setMakes(newMakes);
+
+        if (types.length) {
+          (function () {
+            var makesPartNo = [];
+            var typesPartNo = [];
+
+            var _iterator = _createForOfIteratorHelper(types),
+                _step;
+
+            try {
+              var _loop = function _loop() {
+                var t = _step.value;
+                vehicles.filter(function (vehicle) {
+                  return vehicle.Type === t;
+                }).forEach(function (vehicle) {
+                  makesPartNo.push(vehicle.PartNo);
+                });
+              };
+
+              for (_iterator.s(); !(_step = _iterator.n()).done;) {
+                _loop();
+              }
+            } catch (err) {
+              _iterator.e(err);
+            } finally {
+              _iterator.f();
+            }
+
+            var _iterator2 = _createForOfIteratorHelper(newMakes),
+                _step2;
+
+            try {
+              var _loop2 = function _loop2() {
+                var m = _step2.value;
+                vehicles.filter(function (vehicle) {
+                  return vehicle.Make === m;
+                }).forEach(function (vehicle) {
+                  typesPartNo.push(vehicle.PartNo);
+                });
+              };
+
+              for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+                _loop2();
+              }
+            } catch (err) {
+              _iterator2.e(err);
+            } finally {
+              _iterator2.f();
+            }
+
+            var commonPartNo = makesPartNo.filter(function (value) {
+              return typesPartNo.includes(value);
+            });
+            var newSelected = [];
+
+            var _iterator3 = _createForOfIteratorHelper(commonPartNo),
+                _step3;
+
+            try {
+              var _loop3 = function _loop3() {
+                var number = _step3.value;
+                newSelected.push(vehicles.find(function (vehicle) {
+                  return vehicle.PartNo === number;
+                }));
+              };
+
+              for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+                _loop3();
+              }
+            } catch (err) {
+              _iterator3.e(err);
+            } finally {
+              _iterator3.f();
+            }
+
+            setUserSelected(newSelected);
+          })();
+        } else {
+          var newSelected = vehicles.filter(function (vehicle) {
+            return vehicle.Make === make;
+          });
+          setUserSelected([].concat(_toConsumableArray(userSelected), _toConsumableArray(newSelected)));
+        }
       } else {
+        setMakes(makes.filter(function (m) {
+          return m !== make;
+        }));
+
         var _newSelected = userSelected.filter(function (vehicle) {
           return vehicle.Make !== make;
         }); //Checking whether this is the last selected box or not so that if this is unselected we can display all the vehicles
 
 
         if (_newSelected.length === 0) {
-          setUserSelected(vehicles);
+          if (types.length) {
+            (function () {
+              var typesVehicles = [];
+
+              var _iterator4 = _createForOfIteratorHelper(types),
+                  _step4;
+
+              try {
+                var _loop4 = function _loop4() {
+                  var t = _step4.value;
+                  vehicles.filter(function (vehicle) {
+                    return vehicle.Type === t;
+                  }).forEach(function (vehicle) {
+                    typesVehicles.push(vehicle);
+                  });
+                };
+
+                for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+                  _loop4();
+                }
+              } catch (err) {
+                _iterator4.e(err);
+              } finally {
+                _iterator4.f();
+              }
+
+              setUserSelected(typesVehicles);
+            })();
+          } else {
+            setUserSelected(vehicles);
+          }
         } else {
           setUserSelected(_newSelected);
         }
       }
     } else {
+      setMakes([make]);
       setUserSelected(selectedMakeVehicles);
     }
   }; //Make box functionality
@@ -5524,27 +5654,141 @@ var Home = function Home() {
     if (userSelected.length !== vehicles.length) {
       //Checking whether user is clicking second time for removing the filter or not
       if (clicked) {
-        var newSelected = userSelected.filter(function (vehicle) {
-          return vehicle.Type === type;
-        });
-        setUserSelected(newSelected);
+        var newTypes = [].concat(_toConsumableArray(types), [type]);
+        setTypes(newTypes);
+
+        if (makes.length) {
+          (function () {
+            var makesPartNo = [];
+            var typesPartNo = [];
+
+            var _iterator5 = _createForOfIteratorHelper(makes),
+                _step5;
+
+            try {
+              var _loop5 = function _loop5() {
+                var m = _step5.value;
+                vehicles.filter(function (vehicle) {
+                  return vehicle.Make === m;
+                }).forEach(function (vehicle) {
+                  makesPartNo.push(vehicle.PartNo);
+                });
+              };
+
+              for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+                _loop5();
+              }
+            } catch (err) {
+              _iterator5.e(err);
+            } finally {
+              _iterator5.f();
+            }
+
+            var _iterator6 = _createForOfIteratorHelper(newTypes),
+                _step6;
+
+            try {
+              var _loop6 = function _loop6() {
+                var t = _step6.value;
+                vehicles.filter(function (vehicle) {
+                  return vehicle.Type === t;
+                }).forEach(function (vehicle) {
+                  typesPartNo.push(vehicle.PartNo);
+                });
+              };
+
+              for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+                _loop6();
+              }
+            } catch (err) {
+              _iterator6.e(err);
+            } finally {
+              _iterator6.f();
+            }
+
+            var commonPartNo = makesPartNo.filter(function (value) {
+              return typesPartNo.includes(value);
+            });
+            var newSelected = [];
+
+            var _iterator7 = _createForOfIteratorHelper(commonPartNo),
+                _step7;
+
+            try {
+              var _loop7 = function _loop7() {
+                var number = _step7.value;
+                newSelected.push(vehicles.find(function (vehicle) {
+                  return vehicle.PartNo === number;
+                }));
+              };
+
+              for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
+                _loop7();
+              }
+            } catch (err) {
+              _iterator7.e(err);
+            } finally {
+              _iterator7.f();
+            }
+
+            setUserSelected(newSelected);
+          })();
+        } else {
+          var newSelected = vehicles.filter(function (vehicle) {
+            return vehicle.Type === type;
+          });
+          setUserSelected([].concat(_toConsumableArray(userSelected), _toConsumableArray(newSelected)));
+        }
       } else {
+        setTypes(types.filter(function (t) {
+          return t !== type;
+        }));
+
         var _newSelected2 = userSelected.filter(function (vehicle) {
           return vehicle.Type !== type;
         }); //Checking whether this is the last selected box or not so that if this is unselected we can display all the vehicles
 
 
         if (_newSelected2.length === 0) {
-          setUserSelected(vehicles);
+          if (makes.length) {
+            (function () {
+              var makesVehicles = [];
+
+              var _iterator8 = _createForOfIteratorHelper(makes),
+                  _step8;
+
+              try {
+                var _loop8 = function _loop8() {
+                  var m = _step8.value;
+                  vehicles.filter(function (vehicle) {
+                    return vehicle.Make === m;
+                  }).forEach(function (vehicle) {
+                    makesVehicles.push(vehicle);
+                  });
+                };
+
+                for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
+                  _loop8();
+                }
+              } catch (err) {
+                _iterator8.e(err);
+              } finally {
+                _iterator8.f();
+              }
+
+              setUserSelected(makesVehicles);
+            })();
+          } else {
+            setUserSelected(vehicles);
+          }
         } else {
           setUserSelected(_newSelected2);
         }
       }
     } else {
+      setTypes([type]);
       setUserSelected(selectedTypeVehicles);
     }
-
-    console.log(clicked);
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
