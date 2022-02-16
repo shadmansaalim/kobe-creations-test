@@ -14,12 +14,10 @@ class CreateVehiclesTable extends Migration
     public function up()
     {
         Schema::create('vehicles', function (Blueprint $table) {
-            $table->id();
             $table->string("Make");
             $table->string("Model");
             $table->string("Type");
             $table->string("PartNo");
-            $table->timestamps();
         });
     }
 
