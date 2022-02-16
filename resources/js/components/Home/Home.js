@@ -21,6 +21,7 @@ const Home = () => {
 
     const [makes, setMakes] = useState([]);
     const [types, setTypes] = useState([]);
+    const [model, setModel] = useState(null);
 
 
     useEffect(() => {
@@ -95,11 +96,23 @@ const Home = () => {
                         newSelected.push(vehicles.find(vehicle => vehicle.PartNo === number));
                     }
 
+                    //Match model
+                    if (model !== null) {
+                        newSelected = newSelected.filter(vehicle => vehicle.Model === model);
+                    }
+
                     setUserSelected(newSelected);
                 }
                 else {
-                    const newSelected = vehicles.filter(vehicle => vehicle.Make === make)
-                    setUserSelected([...userSelected, ...newSelected]);
+                    let newSelected = vehicles.filter(vehicle => vehicle.Make === make)
+                    //Match model
+                    if (model !== null) {
+                        newSelected = newSelected.filter(vehicle => vehicle.Model === model);
+                        setUserSelected(newSelected);
+                    }
+                    else {
+                        setUserSelected([...userSelected, ...newSelected]);
+                    }
                 }
             }
             else {
@@ -115,14 +128,29 @@ const Home = () => {
                             });
                         }
 
-                        setUserSelected(typesVehicles);
+                        //Match model
+                        if (model !== null) {
+                            setUserSelected(typesVehicles.filter(vehicle => vehicle.Model === model));
+                        }
+                        else {
+                            setUserSelected(typesVehicles);
+                        }
+                    }
+                    //Match model
+                    else if (model !== null && !types.length) {
+                        setUserSelected(vehicles.filter(vehicle => vehicle.Model === model));
                     }
                     else {
                         setUserSelected(vehicles);
                     }
                 }
                 else {
-                    setUserSelected(newSelected);
+                    if (model !== null) {
+                        setUserSelected(userSelected.filter(vehicle => vehicle.Model === model));
+                    }
+                    else {
+                        setUserSelected(newSelected);
+                    }
                 }
             }
         }
@@ -169,11 +197,22 @@ const Home = () => {
                         newSelected.push(vehicles.find(vehicle => vehicle.PartNo === number));
                     }
 
+                    //Match model
+                    if (model !== null) {
+                        newSelected = newSelected.filter(vehicle => vehicle.Model === model);
+                    }
                     setUserSelected(newSelected);
                 }
                 else {
-                    const newSelected = vehicles.filter(vehicle => vehicle.Type === type)
-                    setUserSelected([...userSelected, ...newSelected]);
+                    let newSelected = vehicles.filter(vehicle => vehicle.Type === type)
+                    //Match model
+                    if (model !== null) {
+                        newSelected = newSelected.filter(vehicle => vehicle.Model === model);
+                        setUserSelected(newSelected);
+                    }
+                    else {
+                        setUserSelected([...userSelected, ...newSelected]);
+                    }
                 }
             }
             else {
@@ -189,8 +228,17 @@ const Home = () => {
                                 makesVehicles.push(vehicle)
                             });
                         }
-
-                        setUserSelected(makesVehicles);
+                        //Match model
+                        if (model !== null) {
+                            setUserSelected(makesVehicles.filter(vehicle => vehicle.Model === model));
+                        }
+                        else {
+                            setUserSelected(makesVehicles);
+                        }
+                    }
+                    //Match model
+                    else if (model !== null && !makes.length) {
+                        setUserSelected(vehicles.filter(vehicle => vehicle.Model === model));
                     }
                     else {
                         setUserSelected(vehicles);
@@ -212,8 +260,16 @@ const Home = () => {
     //Model Drop Down Functionality
     const handleModelOnChange = (e) => {
         const model = e.target.value;
-        const newSelected = userSelected.filter(vehicle => vehicle.Model = model);
-        setUserSelected(newSelected);
+        setModel(e.target.value);
+
+        if (makes.length || types.length) {
+            const newSelected = userSelected.filter(vehicle => vehicle.Model === model);
+            setUserSelected(newSelected);
+        }
+        else {
+            const newSelected = vehicles.filter(vehicle => vehicle.Model === model);
+            setUserSelected(newSelected);
+        }
     }
     return (
         <>

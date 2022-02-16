@@ -5458,6 +5458,11 @@ var Home = function Home() {
       types = _useState16[0],
       setTypes = _useState16[1];
 
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState18 = _slicedToArray(_useState17, 2),
+      model = _useState18[0],
+      setModel = _useState18[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     fetch('/vehicle').then(function (res) {
       return res.json();
@@ -5470,20 +5475,20 @@ var Home = function Home() {
     });
   }, []); //PAGINATION SETUP CODE
 
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(userSelected),
-      _useState18 = _slicedToArray(_useState17, 2),
-      currentVehicles = _useState18[0],
-      setCurrentVehicles = _useState18[1];
-
-  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(userSelected),
       _useState20 = _slicedToArray(_useState19, 2),
-      pageCount = _useState20[0],
-      setPageCount = _useState20[1];
+      currentVehicles = _useState20[0],
+      setCurrentVehicles = _useState20[1];
 
   var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
       _useState22 = _slicedToArray(_useState21, 2),
-      itemOffset = _useState22[0],
-      setItemOffset = _useState22[1];
+      pageCount = _useState22[0],
+      setPageCount = _useState22[1];
+
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+      _useState24 = _slicedToArray(_useState23, 2),
+      itemOffset = _useState24[0],
+      setItemOffset = _useState24[1];
 
   var vehiclesPerPage = 30;
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
@@ -5577,11 +5582,18 @@ var Home = function Home() {
 
               for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
                 _loop3();
-              }
+              } //Match model
+
             } catch (err) {
               _iterator3.e(err);
             } finally {
               _iterator3.f();
+            }
+
+            if (model !== null) {
+              newSelected = newSelected.filter(function (vehicle) {
+                return vehicle.Model === model;
+              });
             }
 
             setUserSelected(newSelected);
@@ -5589,8 +5601,16 @@ var Home = function Home() {
         } else {
           var newSelected = vehicles.filter(function (vehicle) {
             return vehicle.Make === make;
-          });
-          setUserSelected([].concat(_toConsumableArray(userSelected), _toConsumableArray(newSelected)));
+          }); //Match model
+
+          if (model !== null) {
+            newSelected = newSelected.filter(function (vehicle) {
+              return vehicle.Model === model;
+            });
+            setUserSelected(newSelected);
+          } else {
+            setUserSelected([].concat(_toConsumableArray(userSelected), _toConsumableArray(newSelected)));
+          }
         }
       } else {
         setMakes(makes.filter(function (m) {
@@ -5622,20 +5642,38 @@ var Home = function Home() {
 
                 for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
                   _loop4();
-                }
+                } //Match model
+
               } catch (err) {
                 _iterator4.e(err);
               } finally {
                 _iterator4.f();
               }
 
-              setUserSelected(typesVehicles);
+              if (model !== null) {
+                setUserSelected(typesVehicles.filter(function (vehicle) {
+                  return vehicle.Model === model;
+                }));
+              } else {
+                setUserSelected(typesVehicles);
+              }
             })();
+          } //Match model
+          else if (model !== null && !types.length) {
+            setUserSelected(vehicles.filter(function (vehicle) {
+              return vehicle.Model === model;
+            }));
           } else {
             setUserSelected(vehicles);
           }
         } else {
-          setUserSelected(_newSelected);
+          if (model !== null) {
+            setUserSelected(userSelected.filter(function (vehicle) {
+              return vehicle.Model === model;
+            }));
+          } else {
+            setUserSelected(_newSelected);
+          }
         }
       }
     } else {
@@ -5724,11 +5762,18 @@ var Home = function Home() {
 
               for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
                 _loop7();
-              }
+              } //Match model
+
             } catch (err) {
               _iterator7.e(err);
             } finally {
               _iterator7.f();
+            }
+
+            if (model !== null) {
+              newSelected = newSelected.filter(function (vehicle) {
+                return vehicle.Model === model;
+              });
             }
 
             setUserSelected(newSelected);
@@ -5736,8 +5781,16 @@ var Home = function Home() {
         } else {
           var newSelected = vehicles.filter(function (vehicle) {
             return vehicle.Type === type;
-          });
-          setUserSelected([].concat(_toConsumableArray(userSelected), _toConsumableArray(newSelected)));
+          }); //Match model
+
+          if (model !== null) {
+            newSelected = newSelected.filter(function (vehicle) {
+              return vehicle.Model === model;
+            });
+            setUserSelected(newSelected);
+          } else {
+            setUserSelected([].concat(_toConsumableArray(userSelected), _toConsumableArray(newSelected)));
+          }
         }
       } else {
         setTypes(types.filter(function (t) {
@@ -5769,15 +5822,27 @@ var Home = function Home() {
 
                 for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
                   _loop8();
-                }
+                } //Match model
+
               } catch (err) {
                 _iterator8.e(err);
               } finally {
                 _iterator8.f();
               }
 
-              setUserSelected(makesVehicles);
+              if (model !== null) {
+                setUserSelected(makesVehicles.filter(function (vehicle) {
+                  return vehicle.Model === model;
+                }));
+              } else {
+                setUserSelected(makesVehicles);
+              }
             })();
+          } //Match model
+          else if (model !== null && !makes.length) {
+            setUserSelected(vehicles.filter(function (vehicle) {
+              return vehicle.Model === model;
+            }));
           } else {
             setUserSelected(vehicles);
           }
@@ -5794,10 +5859,20 @@ var Home = function Home() {
 
   var handleModelOnChange = function handleModelOnChange(e) {
     var model = e.target.value;
-    var newSelected = userSelected.filter(function (vehicle) {
-      return vehicle.Model = model;
-    });
-    setUserSelected(newSelected);
+    setModel(e.target.value);
+
+    if (makes.length || types.length) {
+      var newSelected = userSelected.filter(function (vehicle) {
+        return vehicle.Model === model;
+      });
+      setUserSelected(newSelected);
+    } else {
+      var _newSelected3 = vehicles.filter(function (vehicle) {
+        return vehicle.Model === model;
+      });
+
+      setUserSelected(_newSelected3);
+    }
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
