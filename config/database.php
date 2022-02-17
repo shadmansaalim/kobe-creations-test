@@ -65,11 +65,11 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => $DB_HOST["host"],
-            'port' => $DB_PORT["port"],
+            'host' => $DB_HOST,
+            'port' => $DB_PORT,
             'database' => ltrim($DATABASE_URL["path"], "/"),
-            'username' => $DB_USERNAME["user"],
-            'password' => $DB_PASSWORD["pass"],
+            'username' => $DB_USERNAME,
+            'password' => $DB_PASSWORD,
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
