@@ -67,7 +67,7 @@ return [
             'driver' => 'pgsql',
             'host' => 'ec2-3-228-222-169.compute-1.amazonaws.com',
             'port' => 5432,
-            'database' => '/sxywkefhhdadss:a8f80f1d9ad91d231e6c09cda75cc00cb2da87a8de0d83aae1bd4f4987865b7a@ec2-3-228-222-169.compute-1.amazonaws.com:5432/d5e13onqljf4r7',
+            'database' => 'sxywkefhhdadss:a8f80f1d9ad91d231e6c09cda75cc00cb2da87a8de0d83aae1bd4f4987865b7a@ec2-3-228-222-169.compute-1.amazonaws.com:5432/d5e13onqljf4r7',
             'username' => 'sxywkefhhdadss',
             'password' => 'a8f80f1d9ad91d231e6c09cda75cc00cb2da87a8de0d83aae1bd4f4987865b7a',
             'charset' => 'utf8',
