@@ -38,6 +38,7 @@ const Home = () => {
     }, [])
 
 
+
     //PAGINATION SETUP CODE
 
     const [currentVehicles, setCurrentVehicles] = useState(userSelected);
