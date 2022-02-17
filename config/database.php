@@ -69,8 +69,7 @@ return [
             'port' => 5432,
             'database' => 'd5e13onqljf4r7',
             'username' => 'sxywkefhhdadss',
-            'password' => 'a8f80f1d9ad91d231e6c09cda75cc00cb2da87a8de0d83aae1bd4f4987865b7a
-            ',
+            'password' => 'a8f80f1d9ad91d231e6c09cda75cc00cb2da87a8de0d83aae1bd4f4987865b7a',
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
