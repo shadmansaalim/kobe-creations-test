@@ -19,18 +19,6 @@ class CreateVehiclesTable extends Migration
             $table->string("Type");
             $table->string("PartNo");
         });
-
-
-        DB::table('vehicles')->insert(
-            array(
-                [
-                   'Make' => 'AIRMAN',
-                   'Model' => 'AX08',
-                   'Type' => 'Rubber Track',
-                   'PartNo' => 'AA6327237X'
-                ]
-            )
-        );
  
     }
 

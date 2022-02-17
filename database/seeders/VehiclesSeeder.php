@@ -15,5 +15,15 @@ class VehiclesSeeder extends Seeder
     public function run()
     {
         //
+        DB::table('vehicles')->insert(
+            array(
+                [
+                   'Make' => 'AIRMAN',
+                   'Model' => 'AX08',
+                   'Type' => 'Rubber Track',
+                   'PartNo' => 'AA6327237X'
+                ]
+            )
+        );
     }
 }
